@@ -142,6 +142,10 @@ footer a{margin-right:14px}
   color:var(--ink);border-radius:999px;padding:4px 12px;font:inherit;font-size:13px;cursor:pointer}
 .detail{margin:10px 0 0;color:var(--muted);font-size:14.5px}
 .detail b{color:var(--ink);font-weight:500}
+.proj{margin-top:14px;padding:12px 16px;border-left:3px solid var(--c-in);background:var(--panel);
+  border-radius:0 10px 10px 0;font-size:14px;color:var(--muted)}
+.proj .pt{color:var(--ink);font-weight:500;font-size:15px;margin:2px 0 6px}
+.proj .lab{font-size:12px;letter-spacing:.04em;color:var(--c-in);font-weight:700}
 </style>
 </head>
 <body>
@@ -156,6 +160,7 @@ footer a{margin-right:14px}
     <p class="headline" id="headline"></p>
     <span class="role" id="role"></span>
     <p class="detail" id="detail"></p>
+    <div class="proj" id="proj"></div>
   </header>
 
   <div class="stage" id="stage">
@@ -308,6 +313,12 @@ function render() {
   const c = pf.current;
   $("role").textContent = (c.show_org ? c.org + " · " : "") + T(c, "role");
   $("detail").innerHTML = `${esc(T(c, "detail"))} · <b>${esc(T(c, "period"))}</b>`;
+  const pj = c.project;
+  $("proj").innerHTML = pj ? `
+    <div class="lab">${L === "ko" ? "국가 R&D 과제" : "National R&D project"} · ${esc(T(pj, "role"))}</div>
+    <div class="pt">${esc(T(pj, "title"))}</div>
+    <div>${esc(T(pj, "program"))} · ${esc(pj.number)}</div>
+    <div>${L === "ko" ? "과제책임자" : "PI"}: ${esc(T(pj, "pi"))} · ${esc(T(pj, "period"))}</div>` : "";
   $("pillars-intro").textContent = pf.pillars_intro[L];
   const colorVar = { L1: "--c-l1", L2: "--c-l2", L3: "--c-l3" };
   $("cards").innerHTML = pf.pillars.map((p, i) => `

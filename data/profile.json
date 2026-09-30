@@ -16,7 +16,21 @@
     "detail_ko": "소뇌 회로의 SNN 모델링·동역학 해석, 신경조절 물질에 따른 가소성 제어 알고리즘 연구",
     "detail_en": "SNN modeling and dynamical analysis of cerebellar circuits; plasticity-control algorithms under neuromodulators",
     "period_ko": "2026.05 – 2027.01 (계약)",
-    "period_en": "May 2026 – Jan 2027 (contract)"
+    "period_en": "May 2026 – Jan 2027 (contract)",
+    "project": {
+      "_note": "국가 R&D 과제 참여 정보 — 본인이 받은 참여연구원 등록 안내(2026-07-22) 기준. 행정 담당자 이름 등 개인정보는 넣지 않는다. 사업명·과제명 영문은 Claude 번역(공식 영문명 미확인)",
+      "role_ko": "참여연구원",
+      "role_en": "Participating researcher",
+      "title_ko": "피지컬 AI 시스템의 실시간 예측제어를 위한 비휘발성 메모리 통합 소뇌모사 반도체 원천기술 개발",
+      "title_en": "Development of original cerebellum-inspired semiconductor technology integrated with non-volatile memory for real-time predictive control of physical AI systems",
+      "program_ko": "차세대지능형반도체기술개발(소자) — 국가연구개발사업",
+      "program_en": "Next-Generation Intelligent Semiconductor Technology Development (Devices) — National R&D Program",
+      "number": "RS-2026-25540328",
+      "pi_ko": "김재욱 박사 (KIST 반도체기술연구단)",
+      "pi_en": "Dr. Jaewook Kim (KIST Center for Semiconductor Technology)",
+      "period_ko": "참여 2026.05.01 – 2026.12.31 (8개월) · 전체 과제 2026.04 – 2028.12",
+      "period_en": "Participation May 1 – Dec 31, 2026 (8 months) · whole project Apr 2026 – Dec 2028"
+    }
   },
   "pillars_intro": {
     "ko": "다양한 학문을 폭넓게 접했지만, 한때는 그것이 개별 깊이의 부족처럼 느껴졌습니다.",
@@ -177,8 +191,8 @@
       "when": "2026",
       "phase": "now",
       "pillar": "Lnow",
-      "ko": "KIST 인턴 연구원 — 뉴로모픽·SNN 연구 (2026.05 – 2027.01) · 석사과정 입학 준비",
-      "en": "KIST Research Intern — neuromorphic & SNN research (May 2026 – Jan 2027) · preparing for a master's program"
+      "ko": "KIST 인턴 연구원 — 뉴로모픽·SNN 연구 (2026.05 – 2027.01) · 국가 R&D 소뇌모사 반도체 과제 참여연구원 · 석사과정 입학 준비",
+      "en": "KIST Research Intern — neuromorphic & SNN research (May 2026 – Jan 2027) · participating researcher in a national R&D project on cerebellum-inspired semiconductors · preparing for a master's program"
     },
     {
       "when": "2027 – 2028",
