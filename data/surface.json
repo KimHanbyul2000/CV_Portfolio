@@ -1,0 +1,31 @@
+{
+  "_note": "3D 곡면의 단일 출처. src/surface.py(이미지·영상)와 web/surface.js(홈페이지)가 둘 다 이 파일을 읽는다. z축 = 깊이·전문성(정성적, 눈금 없음). height 는 본인이 정한 경향값(상징 단위), 장면 높이 = height × z_scale.",
+  "z_scale": 0.1,
+  "pillars": [
+    {"id": "L1", "angle_deg": 90, "radius": 1.0, "height": 10, "sigma": 1.3, "color": "#2ec4b6",
+     "en": "Biomedical Eng.", "ko": "바이오메디컬공학",
+     "_shape": "낮지만 영역이 넓다 — 폭 σ 가 기둥 간격보다 커서 L2·L3 자리까지 덮는다",
+     "roots": {"center": [0, 0], "radius": 1.35, "count": 12, "join": 0.45,
+               "_note": "그 자체로 융합 학문 — 넓은 바닥에서 여러 가닥이 모여 한 기둥이 된다",
+               "fields": ["의료", "전자", "C/C++", "IoT"]}},
+    {"id": "L2", "angle_deg": 210, "radius": 1.0, "height": 15, "sigma": 0.8, "color": "#4c8dff",
+     "en": "Semiconductor", "ko": "반도체",
+     "_shape": "선분은 하나지만 방향마다 특화(돌출)와 부족(골)이 번갈아 있다",
+     "lobes": {"count": 3, "depth": 0.8, "phase_deg": 15, "core": 0.25}},
+    {"id": "L3", "angle_deg": 330, "radius": 1.0, "height": 20, "sigma": 0.35, "color": "#b07cff",
+     "en": "Medical AI", "ko": "의료 AI",
+     "_shape": "가장 높지만 일부에만 특화 — 폭이 좁은 뾰족한 곡면"}
+  ],
+  "center": {"id": "Lnow", "color": "#ff4d8d", "sigma": 0.8,
+             "en": "Neuromorphic Semiconductor", "ko": "뉴로모픽 반도체",
+             "h_now": 5, "h_future": 32,
+             "_note": "h_now = 현재(2026) — 가장 낮다. h_future = 미래 기대값 — 가장 높다"},
+  "surface": {"color": "#ff8c1a", "r_max": 2.2, "n_r": 26, "n_theta": 72},
+  "depth_axis": true,
+  "background": "#0b1020",
+  "light": {
+    "_note": "홈페이지 라이트 테마에서 3D 화면에 쓰는 색. 이미지·영상은 항상 어두운 배경(위 색)이다",
+    "background": "#f4f6fb", "plane": "#c9cfdd", "axis": "#6b7280", "surface": "#e07400",
+    "L1": "#12877c", "L2": "#2f6fe0", "L3": "#7a45d6", "Lnow": "#d81b60"
+  }
+}

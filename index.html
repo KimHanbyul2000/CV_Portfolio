@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kim Hanbyul — Convergence</title>
+<meta name="description" content="바이오메디컬 × 반도체 × 의료 AI가 뉴로모픽 반도체로 수렴한 과정">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* 색 단일 출처. 범주 색(기둥·곡면)은 data/surface.json 과 같은 값이다. */
+:root{
+  --bg:#ffffff; --panel:#f6f7fa; --ink:#141824; --muted:#5d6475; --line:#e1e4ec;
+  --c-l1:#1a9e92; --c-l2:#2f6fe0; --c-l3:#8a55e6; --c-in:#e0306f; --c-s:#e07400;
+  --stage:#0b1020;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b0f1a; --panel:#131a2a; --ink:#e8ecf5; --muted:#8b93a8; --line:#232c40;
+    --c-l1:#2ec4b6; --c-l2:#4c8dff; --c-l3:#b07cff; --c-in:#ff4d8d; --c-s:#ff8c1a;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b0f1a; --panel:#131a2a; --ink:#e8ecf5; --muted:#8b93a8; --line:#232c40;
+  --c-l1:#2ec4b6; --c-l2:#4c8dff; --c-l3:#b07cff; --c-in:#ff4d8d; --c-s:#ff8c1a;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);
+  font-family:"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;
+  font-size:16px;line-height:1.7;word-break:keep-all}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+a{color:var(--c-l2)}
+h1,h2,h3{line-height:1.3}
+h2{font-size:24px;margin:0 0 6px}
+.en{color:var(--muted);font-size:14px}
+section{padding:56px 0;border-top:1px solid var(--line)}
+
+header{padding:48px 0 28px}
+header h1{font-size:clamp(30px,5vw,44px);margin:0}
+header h1 small{font-size:.5em;color:var(--muted);font-weight:500;margin-left:10px}
+.headline{font-size:clamp(17px,2.4vw,20px);margin:10px 0 4px}
+.role{display:inline-block;margin-top:14px;padding:6px 12px;border-radius:999px;
+  border:1px solid var(--c-in);color:var(--c-in);font-size:14px;font-weight:500}
+
+/* 3D 무대 — 그림이므로 테마와 무관하게 어둡다 */
+.stage{position:relative;height:min(68vh,600px);min-height:380px;background:var(--stage);
+  border-radius:14px;overflow:hidden}
+.stage canvas{display:block}
+.overlay{position:absolute;inset:0;pointer-events:none}
+.lbl{position:absolute;left:0;top:0;font-size:12.5px;font-weight:700;line-height:1.35;
+  text-align:center;white-space:nowrap;padding:2px 6px;border-radius:5px;color:var(--k);
+  background:rgba(11,16,32,.72);transition:opacity .2s}
+/* 3D 화면도 테마를 따른다 (web/surface.js 의 setTheme 이 data-theme 을 단다) */
+.stage[data-theme="light"]{background:#f4f6fb;border:1px solid var(--line)}
+.stage[data-theme="light"] .lbl{background:rgba(255,255,255,.82)}
+.stage[data-theme="light"] .caption{color:#141824}
+.stage[data-theme="light"] .caption span,.stage[data-theme="light"] .hint{color:#5d6475}
+.lbl i{font-family:Georgia,serif;font-weight:400}
+.lbl.small{font-size:11.5px;font-weight:500}
+.lbl.axis{font-weight:500;font-size:11.5px;background:none!important}
+.caption{position:absolute;left:18px;top:14px;color:#e8ecf5;pointer-events:none;max-width:70%}
+.caption b{display:block;font-size:17px}
+.caption span{font-size:13px;color:#8b93a8}
+.hint{position:absolute;right:14px;bottom:10px;color:#5d6680;font-size:12px}
+.ctrl{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:14px 0 0}
+.ctrl button{appearance:none;font:inherit;font-size:14px;cursor:pointer;padding:6px 14px;
+  border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+.ctrl button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.ctrl input[type=range]{flex:1 1 200px;accent-color:var(--c-s)}
+#surf{min-width:132px}
+
+/* 기둥 카드 */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:22px}
+.card{background:var(--panel);border-radius:12px;padding:20px;border-top:4px solid var(--c)}
+.card h3{margin:0;font-size:18px;color:var(--c)}
+.card .where{font-size:13.5px;color:var(--muted);margin:4px 0 12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.chip{font-size:13px;padding:2px 10px;border-radius:999px;border:1px solid var(--line);background:var(--bg)}
+.card p{margin:0;font-size:15px}
+.card p.en{margin-top:6px;font-size:13.5px}
+.card p.tag{margin:10px 0 0;font-weight:700;color:var(--c)}
+.card p.tag + p.en{margin:2px 0 4px}
+.lbl small{font-weight:500;font-size:11px;opacity:.85}
+
+.conv{background:var(--panel);border-left:4px solid var(--c-in);border-radius:0 12px 12px 0;padding:20px 22px;margin-top:20px}
+.conv p{margin:0 0 8px}
+
+/* 수식 */
+.eq{font-family:"Cambria Math",Georgia,serif;font-size:17px;background:var(--panel);
+  border-radius:10px;padding:14px 18px;margin:14px 0;overflow-x:auto;white-space:nowrap}
+table{width:100%;border-collapse:collapse;font-size:15px;margin-top:12px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:13.5px}
+.tbl{overflow-x:auto}
+
+/* 타임라인 */
+.tl{list-style:none;margin:22px 0 0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl li{position:relative;padding:0 0 18px 32px}
+.tl li::before{content:"";position:absolute;left:0;top:7px;width:16px;height:16px;border-radius:50%;
+  background:var(--bg);border:3px solid var(--muted)}
+.tl li.now::before{border-color:var(--c-in);background:var(--c-in)}
+.tl li.future::before{border-style:dashed}
+.tl li.future{color:var(--muted)}
+.tl .when{font-weight:700;font-size:14.5px;display:block}
+.tl li.div::before{display:none}
+.tl .div{padding:6px 0 18px 32px;color:var(--muted);font-size:13px;letter-spacing:.05em}
+
+/* 갤러리 */
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-top:20px}
+.gal figure{margin:0}
+.gal img,.gal video{display:block;width:100%;border-radius:10px;background:var(--stage)}
+.gal figcaption{font-size:13.5px;color:var(--muted);margin-top:6px}
+.wide{grid-column:1/-1}
+
+footer{padding:36px 0 56px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer a{margin-right:14px}
+.theme{position:fixed;right:14px;top:14px;appearance:none;border:1px solid var(--line);background:var(--panel);
+  color:var(--ink);border-radius:999px;padding:4px 12px;font:inherit;font-size:13px;cursor:pointer;z-index:5}
+</style>
+</head>
+<body>
+<button class="theme" id="theme" type="button" aria-label="테마 전환">◐</button>
+
+<div class="wrap">
+  <header>
+    <h1 id="name"></h1>
+    <p class="headline" id="headline"></p>
+    <p class="en" id="headline-en"></p>
+    <span class="role" id="role"></span>
+  </header>
+
+  <div class="stage" id="stage">
+    <div class="overlay" id="overlay"></div>
+    <div class="caption"><b id="cap-h"></b><span id="cap-s"></span></div>
+    <div class="hint">드래그해서 회전 · 스크롤로 확대</div>
+  </div>
+  <div class="ctrl">
+    <button type="button" id="play">▶ 처음부터</button>
+    <button type="button" data-u="1">1 기초</button>
+    <button type="button" data-u="2">2 융합</button>
+    <button type="button" data-u="3">3 현재</button>
+    <button type="button" data-u="4" aria-pressed="true">4 미래</button>
+    <input type="range" id="u" min="0" max="4" step="0.01" value="4" aria-label="진행도">
+    <button type="button" id="surf" title="곡면 표시 전환">곡면: 합</button>
+  </div>
+
+  <section id="pillars">
+    <h2>세 개의 기둥 <span class="en">Three foundations</span></h2>
+    <p>다양한 학문을 폭넓게 접했지만, 한때는 그것이 개별 깊이의 부족처럼 느껴졌다.</p>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section id="convergence">
+    <h2>왜 뉴로모픽 반도체로 모였나 <span class="en">Why they converge</span></h2>
+    <div class="conv"><p id="conv-ko"></p><p class="en" id="conv-en"></p></div>
+    <div class="tbl"><table>
+      <thead><tr><th>뉴로모픽 반도체의 층</th><th>쓰이는 기초</th></tr></thead>
+      <tbody>
+        <tr><td>뉴런·시냅스 동작 원리 (무엇을 흉내 내는가)</td><td style="color:var(--c-l1)">L<sub>1</sub> 바이오메디컬공학</td></tr>
+        <tr><td>스파이킹 신경망 학습·분석 (어떻게 계산하는가)</td><td style="color:var(--c-l3)">L<sub>3</sub> 의료 AI</td></tr>
+        <tr><td>칩 아키텍처·공정·논리 (어디서 돌리는가)</td><td style="color:var(--c-l2)">L<sub>2</sub> 반도체</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="math">
+    <h2>시각화 읽는 법 <span class="en">How to read the surface</span></h2>
+    <p><b>z축은 깊이·전문성</b>이다. 눈금 없는 정성적 축이고, 높이는 경향을 나타내는 상징값(L<sub>1</sub> 10 · L<sub>2</sub> 15 · L<sub>3</sub> 20)이다. <b>각 기둥이 자기 곡면을 만들고, 전체 곡면 <i>S</i>는 그 곡면들의 단순 합(중첩)</b>이다. 학문 사이의 상호작용(시너지) 항은 넣지 않았다.</p>
+    <figure style="margin:18px 0"><img src="assets/img/decomposition.png" alt="개별 곡면 네 개와 그 합" style="width:100%;border-radius:10px;background:var(--stage)" loading="lazy"></figure>
+    <div class="tbl"><table>
+      <thead><tr><th>기둥</th><th>높이</th><th>자기 곡면의 모양</th></tr></thead>
+      <tbody>
+        <tr><td style="color:var(--c-l1)"><i>L</i><sub>1</sub> 바이오메디컬공학</td><td>10</td><td>낮지만 가장 넓다 — 폭이 기둥 간격보다 커서 <i>L</i><sub>2</sub>·<i>L</i><sub>3</sub> 자리까지 덮는다. 기둥도 넓은 바닥 원에서 여러 가닥이 모여 선다</td></tr>
+        <tr><td style="color:var(--c-l2)"><i>L</i><sub>2</sub> 반도체</td><td>15</td><td>기둥은 하나지만 방향마다 특화(돌출)와 부족(골)이 번갈아 있다</td></tr>
+        <tr><td style="color:var(--c-l3)"><i>L</i><sub>3</sub> 의료 AI</td><td>20</td><td>가장 높지만 폭이 좁다 — 일부 영역에만 특화</td></tr>
+        <tr><td style="color:var(--c-in)"><i>L</i><sub>now</sub> 뉴로모픽 반도체</td><td>5 → 32</td><td>현재(2026)는 가장 낮고, 미래 기대값에서 가장 높다. 현재 높이 위쪽은 반투명</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tbl"><table>
+      <thead><tr><th>단계</th><th>무엇이 바뀌나</th></tr></thead>
+      <tbody>
+        <tr><td>1 기초</td><td>세 기둥만 선다</td></tr>
+        <tr><td>2 융합</td><td>세 기둥의 곡면이 생기고, 그 합이 전체 곡면 <i>S</i></td></tr>
+        <tr><td>3 현재</td><td><i>L</i><sub>now</sub>의 작은 곡면이 더해져 전체가 <b>약간</b> 오른다</td></tr>
+        <tr><td>4 미래</td><td><i>L</i><sub>now</sub>가 가장 높아지며 그 곡면이 전체를 끌어올린다 — 확정값이 아니라 목표</td></tr>
+      </tbody>
+    </table></div>
+    <div class="eq">f<sub>i</sub>(x, y) = h<sub>i</sub> · exp(−d<sub>i</sub>² / 2σ<sub>i</sub>²) · m<sub>i</sub>(θ),&nbsp;&nbsp; f<sub>now</sub> = H · exp(−r² / 2σ<sub>now</sub>²)</div>
+    <div class="eq">S(x, y) = g · Σ<sub>i</sub> f<sub>i</sub>(x, y) + f<sub>now</sub>(x, y)</div>
+    <p>d<sub>i</sub>는 기둥 <i>i</i>까지의 거리, σ<sub>i</sub>는 곡면의 폭이다. <i>m</i><sub>i</sub>(θ)는 <i>L</i><sub>2</sub>에만 있는 방향별 변조로, 기둥 바로 위에서는 1이라 꼭짓점 높이는 그대로 두고 둘레에 돌출과 골을 만든다. 합이므로 전체 곡면은 어느 기둥보다도 높은 곳을 지난다. 위 3D 화면의 '곡면' 버튼으로 합 · 개별 · 합+개별 · 끔 네 가지 표시를 순환할 수 있다.</p>
+  </section>
+
+  <section id="timeline">
+    <h2>경로 <span class="en">Timeline 2000 – 2032+</span></h2>
+    <ol class="tl" id="tl"></ol>
+  </section>
+
+  <section id="media">
+    <h2>이미지 · 영상 <span class="en">Downloads</span></h2>
+    <div class="gal">
+      <figure class="wide"><video src="assets/video/convergence.mp4" controls muted loop playsinline preload="metadata" poster="assets/img/hero.png"></video>
+        <figcaption>convergence.mp4 — 1920×1080, 약 21초</figcaption></figure>
+      <figure class="wide"><a href="assets/img/overview.png"><img src="assets/img/overview.png" alt="네 단계 비교" loading="lazy"></a><figcaption>overview.png — 네 단계 나란히</figcaption></figure>
+      <figure><a href="assets/img/stage1.png"><img src="assets/img/stage1.png" alt="1단계" loading="lazy"></a><figcaption>stage1.png</figcaption></figure>
+      <figure><a href="assets/img/stage2.png"><img src="assets/img/stage2.png" alt="2단계" loading="lazy"></a><figcaption>stage2.png</figcaption></figure>
+      <figure><a href="assets/img/stage3.png"><img src="assets/img/stage3.png" alt="3단계" loading="lazy"></a><figcaption>stage3.png</figcaption></figure>
+      <figure class="wide"><a href="assets/img/decomposition.png"><img src="assets/img/decomposition.png" alt="개별 곡면 분해" loading="lazy"></a><figcaption>decomposition.png — 개별 곡면과 그 합</figcaption></figure>
+      <figure><a href="assets/img/stage4.png"><img src="assets/img/stage4.png" alt="4단계" loading="lazy"></a><figcaption>stage4.png</figcaption></figure>
+      <figure><a href="assets/img/hero.png"><img src="assets/img/hero.png" alt="대표 이미지" loading="lazy"></a><figcaption>hero.png — 대표 이미지</figcaption></figure>
+    </div>
+  </section>
+</div>
+
+<footer><div class="wrap" id="links"></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script type="module">
+import { mountSurface, U_MAX } from "./web/surface.js";
+
+// 테마 전환 (보조 기능 — 저장 실패해도 동작)
+const root = document.documentElement;
+try { const t = localStorage.getItem("theme"); if (t) root.dataset.theme = t; } catch {}
+const mq = matchMedia("(prefers-color-scheme: dark)");
+const themeNow = () => root.dataset.theme || (mq.matches ? "dark" : "light");
+let view = null;
+document.getElementById("theme").onclick = () => {
+  root.dataset.theme = themeNow() === "dark" ? "light" : "dark";
+  try { localStorage.setItem("theme", root.dataset.theme); } catch {}
+  view?.setTheme(themeNow());
+};
+mq.addEventListener?.("change", () => view?.setTheme(themeNow()));
+
+const [cfg, pf] = await Promise.all(
+  ["data/surface.json", "data/profile.json"].map(p => fetch(p).then(r => r.json())));
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+// 본문
+$("name").innerHTML = `${esc(pf.name.ko)}<small>${esc(pf.name.en)}</small>`;
+$("headline").textContent = pf.headline.ko;
+$("headline-en").textContent = pf.headline.en;
+const c = pf.current;
+$("role").textContent = (c.show_org ? c.org + " · " : "") + c.role_ko;
+const colorVar = { L1: "--c-l1", L2: "--c-l2", L3: "--c-l3" };
+$("cards").innerHTML = pf.pillars.map((p, i) => `
+  <div class="card" style="--c:var(${colorVar[p.id]})">
+    <h3><i>L</i><sub>${i + 1}</sub> ${esc(p.title_ko)}</h3>
+    <div class="en">${esc(p.title_en)}</div>
+    ${p.tagline_ko ? `<p class="tag">${esc(p.tagline_ko)}</p><p class="en">${esc(p.tagline_en)}</p>` : ""}
+    <div class="where">${esc(p.where)}</div>
+    <div class="chips">${p.skills.map(s => `<span class="chip">${esc(s)}</span>`).join("")}</div>
+    <p>→ ${esc(p.bridge_ko)}</p><p class="en">${esc(p.bridge_en)}</p>
+  </div>`).join("");
+$("conv-ko").textContent = pf.convergence.body_ko;
+$("conv-en").textContent = pf.convergence.body_en;
+
+let lastPhase = null, html = "";
+for (const t of pf.timeline) {
+  if (t.phase === "future" && lastPhase !== "future") html += `<li class="div">— 앞으로 · 목표 —</li>`;
+  lastPhase = t.phase;
+  html += `<li class="${t.phase}"><span class="when">${esc(t.when)}</span>${esc(t.ko)}</li>`;
+}
+$("tl").innerHTML = html;
+$("links").innerHTML = pf.links.map(l => `<a href="${esc(l.href)}">${esc(l.label)}</a>`).join("")
+  + `<div style="margin-top:8px">© ${esc(pf.name.en)}</div>`;
+
+// 3D
+const CAP = {
+  1: ["STAGE 1 · Foundations", "학문적 기초 — 세 기둥. 바이오메디컬공학은 낮지만 가장 넓은 바닥을 딛는다"],
+  2: ["STAGE 2 · Integration", "융합 — 각 기둥이 자기 곡면을 만들고, 그 중첩이 전체 곡면 S"],
+  3: ["STAGE 3 · Now (2026)", "현재 — L_now 는 아직 가장 낮다. 그 곡면이 더해져 전체가 약간 오른다"],
+  4: ["STAGE 4 · Future (expected)", "미래 기대값 — L_now 가 가장 높아지며 전체 곡면을 끌어올린다"],
+};
+view = await mountSurface($("stage"), $("overlay"), cfg);
+view.setTheme(themeNow());
+// 곡면 표시 4상태를 버튼 하나로 순환한다
+const SURF_MODES = [
+  { name: "합", sum: true, own: false },
+  { name: "개별", sum: false, own: true },
+  { name: "합 + 개별", sum: true, own: true },
+  { name: "끔", sum: false, own: false },
+];
+let surfMode = 0;
+$("surf").onclick = () => {
+  surfMode = (surfMode + 1) % SURF_MODES.length;
+  const m = SURF_MODES[surfMode];
+  view.setSurfaces(m);
+  $("surf").textContent = "곡면: " + m.name;
+};
+const slider = $("u"), stageBtns = [...document.querySelectorAll("[data-u]")];
+function setU(u) {
+  view.setU(u);
+  slider.value = u;
+  const st = Math.min(U_MAX, Math.max(1, Math.ceil(u - 0.001)));
+  $("cap-h").textContent = CAP[st][0];
+  $("cap-s").textContent = CAP[st][1];
+  stageBtns.forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.u === st && Math.abs(u - st) < 0.01)));
+}
+let anim = null;
+function tween(from, to, ms) {
+  cancelAnimationFrame(anim);
+  const t0 = performance.now();
+  const step = now => {
+    const k = Math.min(1, (now - t0) / ms);
+    setU(from + (to - from) * k);
+    if (k < 1) anim = requestAnimationFrame(step);
+  };
+  anim = requestAnimationFrame(step);
+}
+slider.oninput = () => { cancelAnimationFrame(anim); setU(+slider.value); };
+stageBtns.forEach(b => b.onclick = () => tween(view.getU(), +b.dataset.u, 900));
+$("play").onclick = () => tween(0, U_MAX, 12000);
+setU(U_MAX);
+</script>
+</body>
+</html>
