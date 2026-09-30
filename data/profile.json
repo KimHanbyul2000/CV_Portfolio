@@ -26,10 +26,11 @@
         "의료",
         "전자",
         "C/C++",
-        "IoT"
+        "IoT",
+        "생체신호 처리"
       ],
-      "bridge_ko": "뉴런·시냅스의 생물학적 동작을 이해하는 기반, 그리고 센서·임베디드 수준의 하드웨어 감각",
-      "bridge_en": "Biology of neurons and synapses, plus a hands-on feel for sensors and embedded hardware",
+      "bridge_ko": "뉴런·시냅스의 생물학적 동작, 그리고 생체신호 처리 — 시간에 따라 흐르는 신호를 다루는 감각이 스파이크 기반 연산(SNN)으로 이어진다",
+      "bridge_en": "Neuron and synapse biology, plus biosignal processing — handling signals in time carries over directly to spike-based computation (SNN)",
       "tagline_ko": "그 자체로 융합 학문 — 의학 · 전자 · 소프트웨어 · IoT를 한 전공 안에서. 그래서 반도체·AI 영역까지 바닥이 닿아 있다",
       "tagline_en": "Already a convergent discipline — medicine, electronics, software and IoT in one major, with a footing that reaches into semiconductors and AI"
     },
@@ -55,18 +56,30 @@
       "skills": [
         "PyTorch",
         "통계학",
+        "Swin-Unet (MRI)",
+        "유전체 데이터 모델",
         "PACS",
         "Orthanc"
       ],
-      "bridge_ko": "신경망 학습 알고리즘과 데이터 분석, 실제 의료 시스템에 모델을 붙여 보는 경험",
-      "bridge_en": "Neural-network training, statistics, and wiring models into real clinical systems"
+      "bridge_ko": "역전파로 학습하는 기존 딥러닝(MRI 분할, 유전체 데이터)과 데이터 분석 도구 — SNN 을 설계할 때 비교 기준이 된다",
+      "bridge_en": "Conventional backprop-trained deep learning (MRI segmentation, genomics) and data-analysis tools — the baseline SNN designs are measured against"
     }
   ],
   "convergence": {
     "title_ko": "뉴로모픽 반도체",
     "title_en": "Neuromorphic Semiconductor",
-    "body_ko": "뉴로모픽 반도체는 뇌의 뉴런·시냅스 동작(바이오메디컬)을 알고리즘으로 옮기고(AI), 그것을 전용 실리콘 위에서 돌리는(반도체) 분야다. 세 학문을 넓게 접하면서 개별 깊이를 고민했지만, 이 도메인에서는 세 기초가 각각 따로가 아니라 한 문제의 세 층으로 동시에 쓰인다.",
-    "body_en": "Neuromorphic engineering takes how neurons and synapses behave (biomedical), turns it into learning algorithms (AI), and runs them on dedicated silicon (semiconductor). Breadth that once felt like a lack of depth turns out to be three layers of a single problem."
+    "body_ko": [
+      "뉴로모픽 반도체는 뇌의 뉴런·시냅스 동작(바이오메디컬)을 알고리즘으로 옮기고(AI), 그것을 전용 실리콘 위에서 돌리는(반도체) 분야다.",
+      "학부에서 의공학을 전공하며 생체 신호와 하드웨어의 기초를 다진 뒤, K-Digital Training 과정과 연구실 현장에서 뇌 신경회로 모델링 및 AI 알고리즘을 고도화했습니다. 현재 한국과학기술연구원(KIST) 뇌과학연구소 뇌융합연구단 소속으로 소뇌 회로의 스파이킹 신경망(SNN) 모델링과 동역학 해석, 신경조절 물질에 따른 가소성 제어 알고리즘을 연구하며, 차세대반도체연구소 인공뇌융합연구단과 협업하여 뉴로모픽 하드웨어에 탑재할 형태의 연산 로직을 설계하고 있습니다.",
+      "이 과정에서 얻은 핵심 통찰은 뉴로모픽 반도체가 바이오메디컬, AI, 반도체라는 세 학문의 물리적·알고리즘적 층위가 하나로 통합되는 교차점이라는 사실입니다. 생체 뇌의 소뇌 회로 동작 원리(바이오메디컬)를 추상화하여 저전력 스파이킹 제어 알고리즘으로 설계하고(AI), 이를 전용 실리콘 구조 위에 최적화하여 구현하는(반도체) 일련의 과정은 개별 학문의 단순한 조합이 아닌 하나의 목적을 향한 다층적 접근입니다.",
+      "의생명공학 기초 지식을 바탕으로 biological neural circuit의 동작을 다루고, Brian2/NEURON 시뮬레이션 기반의 SNN 및 동역학 알고리즘을 설계하는 역량과 뉴로모픽 하드웨어에 탑재될 로직을 이해하는 융합적 시각을 바탕으로, 뇌 과학적 원리를 가장 효율적인 인공뇌 하드웨어 시스템으로 구현해내는 연구자로 성장하고자 합니다."
+    ],
+    "body_en": [
+      "Neuromorphic engineering takes how neurons and synapses behave (biomedical), turns it into algorithms (AI), and runs them on dedicated silicon (semiconductor).",
+      "After building a foundation in biosignals and hardware as a biomedical engineering undergraduate, I advanced neural-circuit modeling and AI algorithms through K-Digital Training and lab work. At KIST's Brain Science Institute I now model cerebellar circuits as spiking neural networks, analyze their dynamics and study neuromodulator-dependent plasticity control, while designing computation logic intended for neuromorphic hardware together with the Next-Generation Semiconductor Institute.",
+      "The key insight: neuromorphic semiconductors are where the physical and algorithmic layers of biomedical engineering, AI and semiconductors merge — abstracting cerebellar circuit principles, designing low-power spiking algorithms, and optimizing them on dedicated silicon is one multi-layered pursuit, not a mere combination.",
+      "I aim to grow into a researcher who turns principles of the brain into the most efficient artificial-brain hardware systems."
+    ]
   },
   "timeline": [
     {
@@ -75,8 +88,18 @@
       "phase": "past"
     },
     {
-      "when": "2007.03 – 2019.02",
-      "ko": "초·중·고등학교 — 경기 군포 군포중앙고등학교 졸업",
+      "when": "2007.03 – 2013",
+      "ko": "초등학교 — 경기 군포 둔대초등학교 · 군포대야초등학교",
+      "phase": "past"
+    },
+    {
+      "when": "2013 – 2016",
+      "ko": "중학교 — 경기 군포 당동중학교",
+      "phase": "past"
+    },
+    {
+      "when": "2016 – 2019.02",
+      "ko": "고등학교 — 경기 군포 군포중앙고등학교 졸업",
       "phase": "past"
     },
     {
@@ -92,7 +115,7 @@
     },
     {
       "when": "2021 – 2022",
-      "ko": "군 복무 · 전역",
+      "ko": "군 복무 — 제102기갑여단 기갑병, K1E1 전차(1302호) 포수, 강원 속초 · 전역",
       "phase": "past"
     },
     {
@@ -120,12 +143,12 @@
     },
     {
       "when": "2027 – 2028",
-      "ko": "국내 석사과정 — 전공 연구 역량 심화, 연구 실적 확보, 미국 박사 유학 준비",
+      "ko": "국내 석사과정 — 전공 연구 역량 심화, 연구 실적 확보, 박사 유학 준비",
       "phase": "future"
     },
     {
       "when": "2029 – 2032",
-      "ko": "미국 박사과정 — 뉴로모픽 핵심 알고리즘·하드웨어 아키텍처 연구",
+      "ko": "박사과정 (미국 유학 희망) — 뉴로모픽 핵심 알고리즘·하드웨어 아키텍처 연구",
       "phase": "future"
     },
     {
@@ -135,6 +158,10 @@
     }
   ],
   "links": [
+    {
+      "label": "Home",
+      "href": "https://kimhanbyul2000.github.io/"
+    },
     {
       "label": "GitHub",
       "href": "https://github.com/KimHanbyul2000"

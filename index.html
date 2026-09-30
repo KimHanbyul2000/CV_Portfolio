@@ -84,7 +84,9 @@ header h1 small{font-size:.5em;color:var(--muted);font-weight:500;margin-left:10
 .lbl small{font-weight:500;font-size:11px;opacity:.85}
 
 .conv{background:var(--panel);border-left:4px solid var(--c-in);border-radius:0 12px 12px 0;padding:20px 22px;margin-top:20px}
-.conv p{margin:0 0 8px}
+.conv p{margin:0 0 12px}
+.conv #conv-ko p:first-child{font-weight:700}
+.conv .en{margin-top:16px;padding-top:12px;border-top:1px solid var(--line)}
 
 /* 수식 */
 .eq{font-family:"Cambria Math",Georgia,serif;font-size:17px;background:var(--panel);
@@ -154,12 +156,13 @@ footer a{margin-right:14px}
 
   <section id="convergence">
     <h2>왜 뉴로모픽 반도체로 모였나 <span class="en">Why they converge</span></h2>
-    <div class="conv"><p id="conv-ko"></p><p class="en" id="conv-en"></p></div>
+    <div class="conv"><div id="conv-ko"></div><div class="en" id="conv-en"></div></div>
     <div class="tbl"><table>
       <thead><tr><th>뉴로모픽 반도체의 층</th><th>쓰이는 기초</th></tr></thead>
       <tbody>
         <tr><td>뉴런·시냅스 동작 원리 (무엇을 흉내 내는가)</td><td style="color:var(--c-l1)">L<sub>1</sub> 바이오메디컬공학</td></tr>
-        <tr><td>스파이킹 신경망 학습·분석 (어떻게 계산하는가)</td><td style="color:var(--c-l3)">L<sub>3</sub> 의료 AI</td></tr>
+        <tr><td>스파이크 신호 처리·SNN 동역학 (어떻게 계산하는가) — 역전파로 가중치를 고치는 기존 신경망과 달리 시간에 따라 흐르는 스파이크를 다룬다</td><td style="color:var(--c-l1)">L<sub>1</sub> 바이오메디컬공학 — 생체신호 처리</td></tr>
+        <tr><td>기존 딥러닝·데이터 분석 (무엇과 비교하는가) — MRI 분할(Swin-Unet)·유전체 데이터 모델</td><td style="color:var(--c-l3)">L<sub>3</sub> 의료 AI</td></tr>
         <tr><td>칩 아키텍처·공정·논리 (어디서 돌리는가)</td><td style="color:var(--c-l2)">L<sub>2</sub> 반도체</td></tr>
       </tbody>
     </table></div>
@@ -254,8 +257,9 @@ $("cards").innerHTML = pf.pillars.map((p, i) => `
     <div class="chips">${p.skills.map(s => `<span class="chip">${esc(s)}</span>`).join("")}</div>
     <p>→ ${esc(p.bridge_ko)}</p><p class="en">${esc(p.bridge_en)}</p>
   </div>`).join("");
-$("conv-ko").textContent = pf.convergence.body_ko;
-$("conv-en").textContent = pf.convergence.body_en;
+// 본문은 문단 배열이다
+$("conv-ko").innerHTML = pf.convergence.body_ko.map(t => `<p>${esc(t)}</p>`).join("");
+$("conv-en").innerHTML = pf.convergence.body_en.map(t => `<p>${esc(t)}</p>`).join("");
 
 let lastPhase = null, html = "";
 for (const t of pf.timeline) {
