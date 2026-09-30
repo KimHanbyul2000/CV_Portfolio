@@ -1,160 +1,202 @@
 {
-  "_note": "홈페이지 본문의 단일 출처. index.html 이 이 파일을 읽어 그린다. 본인이 준 사실만 적는다 — 측정하지 않은 수치·성과를 만들어 넣지 않는다.",
+  "_note": "홈페이지 본문의 단일 출처. index.html 이 이 파일을 읽어 그린다. 모든 문구는 ko/en 쌍. 본인이 준 사실만 적는다. convergence.body_ko 는 본인 작성 — 임의 수정 금지.",
   "name": {
     "ko": "김한별",
     "en": "Kim Hanbyul"
   },
   "headline": {
-    "ko": "바이오메디컬(그 자체로 융합) × 반도체 × 의료 AI — 뉴로모픽 반도체로 수렴한 다학제 엔지니어",
-    "en": "A multidisciplinary engineer whose biomedical, semiconductor and medical-AI foundations converged on neuromorphic semiconductors."
+    "ko": "바이오메디컬 × 반도체 × 의료 AI에서 뉴로모픽 반도체로 — 뇌의 원리를 인공뇌 하드웨어로 구현하는 연구자를 지향합니다",
+    "en": "From biomedical engineering, semiconductors and medical AI to neuromorphic semiconductors — aiming to realize the principles of the brain as artificial-brain hardware."
   },
   "current": {
-    "role_ko": "인턴 연구원 — 뉴로모픽 · 스파이킹 신경망(SNN) 연구",
-    "role_en": "Research Intern — Neuromorphic Computing & Spiking Neural Networks",
     "org": "KIST",
     "show_org": true,
-    "detail_ko": "생물학적 신경회로를 스파이킹 신경망으로 시뮬레이션하는 연구에 참여 (9개월 차)",
-    "detail_en": "Simulating biological neural circuits with spiking neural networks (9 months)"
+    "role_ko": "인턴 연구원 — 뉴로모픽 · 스파이킹 신경망(SNN) 연구",
+    "role_en": "Research Intern — Neuromorphic Computing & Spiking Neural Networks",
+    "detail_ko": "소뇌 회로의 SNN 모델링·동역학 해석, 신경조절 물질에 따른 가소성 제어 알고리즘 연구",
+    "detail_en": "SNN modeling and dynamical analysis of cerebellar circuits; plasticity-control algorithms under neuromodulators",
+    "period_ko": "2026.05 – 2027.01 (계약)",
+    "period_en": "May 2026 – Jan 2027 (contract)"
+  },
+  "pillars_intro": {
+    "ko": "다양한 학문을 폭넓게 접했지만, 한때는 그것이 개별 깊이의 부족처럼 느껴졌습니다.",
+    "en": "I studied many disciplines broadly, and for a while that felt like a lack of depth in any one of them."
   },
   "pillars": [
     {
       "id": "L1",
       "title_ko": "바이오메디컬공학 (전공)",
       "title_en": "Biomedical Engineering — Major",
-      "where": "건국대학교 GLOCAL캠퍼스 바이오메디컬공학과 (충주)",
-      "skills": [
+      "tagline_ko": "그 자체로 융합 학문 — 의학·전자·소프트웨어·IoT와 생체신호 처리를 한 전공 안에서 다룹니다",
+      "tagline_en": "A convergent discipline in itself — medicine, electronics, software, IoT and biosignal processing within one major",
+      "where_ko": "건국대학교 GLOCAL캠퍼스 바이오메디컬공학과 (충주)",
+      "where_en": "Konkuk University GLOCAL Campus, Dept. of Biomedical Engineering (Chungju)",
+      "skills_ko": [
         "의료",
         "전자",
         "C/C++",
         "IoT",
         "생체신호 처리"
       ],
-      "bridge_ko": "뉴런·시냅스의 생물학적 동작, 그리고 생체신호 처리 — 시간에 따라 흐르는 신호를 다루는 감각이 스파이크 기반 연산(SNN)으로 이어진다",
-      "bridge_en": "Neuron and synapse biology, plus biosignal processing — handling signals in time carries over directly to spike-based computation (SNN)",
-      "tagline_ko": "그 자체로 융합 학문 — 의학 · 전자 · 소프트웨어 · IoT를 한 전공 안에서. 그래서 반도체·AI 영역까지 바닥이 닿아 있다",
-      "tagline_en": "Already a convergent discipline — medicine, electronics, software and IoT in one major, with a footing that reaches into semiconductors and AI"
+      "skills_en": [
+        "Medicine",
+        "Electronics",
+        "C/C++",
+        "IoT",
+        "Biosignal processing"
+      ],
+      "bridge_ko": "뉴런·시냅스의 생물학적 동작과 생체신호 처리 — 시간에 따라 흐르는 신호를 다루는 감각이 스파이크 기반 연산(SNN)으로 이어집니다",
+      "bridge_en": "The biology of neurons and synapses, plus biosignal processing — a feel for signals flowing in time carries directly into spike-based computation (SNN)"
     },
     {
       "id": "L2",
       "title_ko": "반도체 (부전공)",
       "title_en": "Semiconductor — Minor",
-      "where": "충북 PRIDE 공유대학 시스템반도체 (부전공, 2024–)",
-      "skills": [
+      "where_ko": "충북 PRIDE 공유대학 시스템반도체 (부전공, 2024–)",
+      "where_en": "Chungbuk PRIDE Shared University — System Semiconductor (minor, 2024–)",
+      "skills_ko": [
         "RISC-V",
         "반도체 공정",
         "컴퓨터 구조 (ALU·메모리)",
         "논리연산"
       ],
-      "bridge_ko": "연산을 실리콘 위에 올리는 방식 — 아키텍처·공정·논리 수준의 제약을 읽는 눈",
-      "bridge_en": "How computation lands on silicon — architecture, process and logic-level constraints"
+      "skills_en": [
+        "RISC-V",
+        "Semiconductor process",
+        "Computer architecture (ALU · memory)",
+        "Logic operations"
+      ],
+      "bridge_ko": "연산이 실리콘 위에서 구현되는 방식 — RISC-V·공정·논리 설계 수준에서 뉴로모픽 하드웨어에 탑재될 로직의 제약을 이해합니다",
+      "bridge_en": "How computation is realized on silicon — understanding, at the RISC-V, process and logic-design level, the constraints on logic deployed to neuromorphic hardware"
     },
     {
       "id": "L3",
       "title_ko": "의료 AI (K-Digital Training)",
       "title_en": "Medical AI — K-Digital Training (1,026 h)",
-      "where": "대전 미래융합교육원 · 건양대학교병원 바이오메디컬 인공지능 과정 (K-Digital Training, 총 1,026시간)",
-      "skills": [
+      "where_ko": "대전 미래융합교육원 · 건양대학교병원 바이오메디컬 인공지능 과정 (K-Digital Training, 총 1,026시간)",
+      "where_en": "Future Convergence Education Center, Daejeon · Konyang University Hospital Biomedical AI program (K-Digital Training, 1,026 h)",
+      "skills_ko": [
         "PyTorch",
         "통계학",
-        "Swin-Unet (MRI)",
+        "Swin UNETR (MRI)",
         "유전체 데이터 모델",
         "PACS",
         "Orthanc"
       ],
-      "bridge_ko": "역전파로 학습하는 기존 딥러닝(MRI 분할, 유전체 데이터)과 데이터 분석 도구 — SNN 을 설계할 때 비교 기준이 된다",
-      "bridge_en": "Conventional backprop-trained deep learning (MRI segmentation, genomics) and data-analysis tools — the baseline SNN designs are measured against"
+      "skills_en": [
+        "PyTorch",
+        "Statistics",
+        "Swin UNETR (MRI)",
+        "Genomic data models",
+        "PACS",
+        "Orthanc"
+      ],
+      "bridge_ko": "역전파로 학습하는 기존 딥러닝(MRI 분할·유전체 데이터)과 데이터 분석 도구 — SNN을 설계할 때 비교 기준이 됩니다",
+      "bridge_en": "Conventional backprop-trained deep learning (MRI segmentation, genomic data) and data-analysis tools — the baseline SNN designs are measured against"
     }
   ],
   "convergence": {
-    "title_ko": "뉴로모픽 반도체",
-    "title_en": "Neuromorphic Semiconductor",
     "body_ko": [
-      "뉴로모픽 반도체는 뇌의 뉴런·시냅스 동작(바이오메디컬)을 알고리즘으로 옮기고(AI), 그것을 전용 실리콘 위에서 돌리는(반도체) 분야다.",
+      "뉴로모픽 반도체는 뇌의 뉴런·시냅스 동작(바이오메디컬)을 알고리즘으로 옮기고(AI), 그것을 전용 실리콘 위에서 돌리는(반도체) 분야입니다.",
       "학부에서 의공학을 전공하며 생체 신호와 하드웨어의 기초를 다진 뒤, K-Digital Training 과정과 연구실 현장에서 뇌 신경회로 모델링 및 AI 알고리즘을 고도화했습니다. 현재 한국과학기술연구원(KIST) 뇌과학연구소 뇌융합연구단 소속으로 소뇌 회로의 스파이킹 신경망(SNN) 모델링과 동역학 해석, 신경조절 물질에 따른 가소성 제어 알고리즘을 연구하며, 차세대반도체연구소 인공뇌융합연구단과 협업하여 뉴로모픽 하드웨어에 탑재할 형태의 연산 로직을 설계하고 있습니다.",
       "이 과정에서 얻은 핵심 통찰은 뉴로모픽 반도체가 바이오메디컬, AI, 반도체라는 세 학문의 물리적·알고리즘적 층위가 하나로 통합되는 교차점이라는 사실입니다. 생체 뇌의 소뇌 회로 동작 원리(바이오메디컬)를 추상화하여 저전력 스파이킹 제어 알고리즘으로 설계하고(AI), 이를 전용 실리콘 구조 위에 최적화하여 구현하는(반도체) 일련의 과정은 개별 학문의 단순한 조합이 아닌 하나의 목적을 향한 다층적 접근입니다.",
       "의생명공학 기초 지식을 바탕으로 biological neural circuit의 동작을 다루고, Brian2/NEURON 시뮬레이션 기반의 SNN 및 동역학 알고리즘을 설계하는 역량과 뉴로모픽 하드웨어에 탑재될 로직을 이해하는 융합적 시각을 바탕으로, 뇌 과학적 원리를 가장 효율적인 인공뇌 하드웨어 시스템으로 구현해내는 연구자로 성장하고자 합니다."
     ],
     "body_en": [
-      "Neuromorphic engineering takes how neurons and synapses behave (biomedical), turns it into algorithms (AI), and runs them on dedicated silicon (semiconductor).",
-      "After building a foundation in biosignals and hardware as a biomedical engineering undergraduate, I advanced neural-circuit modeling and AI algorithms through K-Digital Training and lab work. At KIST's Brain Science Institute I now model cerebellar circuits as spiking neural networks, analyze their dynamics and study neuromodulator-dependent plasticity control, while designing computation logic intended for neuromorphic hardware together with the Next-Generation Semiconductor Institute.",
-      "The key insight: neuromorphic semiconductors are where the physical and algorithmic layers of biomedical engineering, AI and semiconductors merge — abstracting cerebellar circuit principles, designing low-power spiking algorithms, and optimizing them on dedicated silicon is one multi-layered pursuit, not a mere combination.",
-      "I aim to grow into a researcher who turns principles of the brain into the most efficient artificial-brain hardware systems."
+      "A neuromorphic semiconductor takes the behavior of the brain's neurons and synapses (biomedical engineering), translates it into algorithms (AI), and runs them on dedicated silicon (semiconductors).",
+      "After building a foundation in biosignals and hardware as a biomedical engineering undergraduate, I advanced brain neural-circuit modeling and AI algorithms through the K-Digital Training program and hands-on lab work. I am currently with the Center for Brain Convergence Research, Brain Science Institute, Korea Institute of Science and Technology (KIST), researching spiking neural network (SNN) modeling and dynamical analysis of cerebellar circuits, and algorithms that control plasticity under neuromodulators. In collaboration with the Artificial Brain Convergence Research Group of KIST's Post-Silicon Semiconductor Institute, I am designing computational logic in a form that can be deployed on neuromorphic hardware.",
+      "The key insight from this journey is that neuromorphic semiconductors are the intersection where the physical and algorithmic layers of three disciplines — biomedical engineering, AI and semiconductors — merge into one. Abstracting the operating principles of the cerebellar circuit in the living brain (biomedical engineering), designing them as low-power spiking control algorithms (AI), and optimizing and implementing them on dedicated silicon (semiconductors) is not a simple combination of separate disciplines but a multi-layered approach toward a single goal.",
+      "Building on my foundation in biomedical engineering, I work with the behavior of biological neural circuits and design SNN and dynamical algorithms based on Brian2/NEURON simulations. With this capability and an integrated view of the logic to be deployed on neuromorphic hardware, I aim to grow into a researcher who realizes the principles of brain science as the most efficient artificial-brain hardware systems."
     ]
   },
   "timeline": [
     {
       "when": "2000",
+      "phase": "past",
       "ko": "출생",
-      "phase": "past"
+      "en": "Born"
     },
     {
       "when": "2007.03 – 2013",
+      "phase": "past",
       "ko": "초등학교 — 경기 군포 둔대초등학교 · 군포대야초등학교",
-      "phase": "past"
+      "en": "Elementary school — Dundae and Gunpo Daeya Elementary Schools, Gunpo, Gyeonggi"
     },
     {
       "when": "2013 – 2016",
+      "phase": "past",
       "ko": "중학교 — 경기 군포 당동중학교",
-      "phase": "past"
+      "en": "Middle school — Dangdong Middle School, Gunpo"
     },
     {
       "when": "2016 – 2019.02",
+      "phase": "past",
       "ko": "고등학교 — 경기 군포 군포중앙고등학교 졸업",
-      "phase": "past"
+      "en": "High school — graduated from Gunpo Jungang High School, Gunpo"
     },
     {
       "when": "2019",
+      "phase": "past",
       "ko": "대입 재수",
-      "phase": "past"
+      "en": "A second year preparing for university entrance"
     },
     {
       "when": "2020",
-      "ko": "건국대학교 GLOCAL캠퍼스 바이오메디컬공학과 입학 (코로나19 시기)",
       "phase": "past",
-      "pillar": "L1"
+      "pillar": "L1",
+      "ko": "건국대학교 GLOCAL캠퍼스 바이오메디컬공학과 입학 (코로나19 시기)",
+      "en": "Entered Konkuk University GLOCAL Campus, Biomedical Engineering (during COVID-19)"
     },
     {
       "when": "2021 – 2022",
+      "phase": "past",
       "ko": "군 복무 — 제102기갑여단 기갑병, K1E1 전차(1302호) 포수, 강원 속초 · 전역",
-      "phase": "past"
+      "en": "Military service — armor crewman, 102nd Armored Brigade; gunner of K1E1 tank No. 1302, Sokcho, Gangwon · discharged"
     },
     {
       "when": "2023",
+      "phase": "past",
       "ko": "2학년 — 전공 입문, 오송 활동, 타 학과 탐색, 3D 관련 활동, 미국 방문",
-      "phase": "past"
+      "en": "Sophomore — introduction to the major, activities in Osong, exploring other departments, 3D-related activities, a visit to the US"
     },
     {
       "when": "2024",
-      "ko": "3학년 — 충북 PRIDE 공유대학 시스템반도체 부전공 시작, 청주 오송생명과학단지·오창과학산업단지 실습, 서울·건대 활동, 대만·싱가포르·일본 방문",
       "phase": "past",
-      "pillar": "L2"
+      "pillar": "L2",
+      "ko": "3학년 — 충북 PRIDE 공유대학 시스템반도체 부전공 시작, 청주 오송생명과학단지·오창과학산업단지 실습, 서울·건대 활동, 대만·싱가포르·일본 방문",
+      "en": "Junior — began a System Semiconductor minor (Chungbuk PRIDE Shared University), practicums at the Osong Life Science Complex and Ochang Science Industrial Complex in Cheongju, activities in Seoul, visits to Taiwan, Singapore and Japan"
     },
     {
       "when": "2025",
-      "ko": "4학년 — 전공 필수 완료, 대전 미래융합교육원 「건양대학교병원 바이오메디컬 인공지능」 과정(1,026시간)에서 코딩 집중 학습",
       "phase": "past",
-      "pillar": "L3"
+      "pillar": "L3",
+      "ko": "4학년 — 전공 필수 완료, 대전 미래융합교육원 「건양대학교병원 바이오메디컬 인공지능」 과정(1,026시간)에서 코딩 집중 학습",
+      "en": "Senior — completed major requirements; intensive coding in the Konyang University Hospital Biomedical AI program (1,026 h) at the Future Convergence Education Center, Daejeon"
     },
     {
       "when": "2026",
-      "ko": "KIST 인턴 연구원 — 뉴로모픽·SNN 연구 (9개월) · 석사과정 입학 준비",
       "phase": "now",
-      "pillar": "Lnow"
+      "pillar": "Lnow",
+      "ko": "KIST 인턴 연구원 — 뉴로모픽·SNN 연구 (2026.05 – 2027.01) · 석사과정 입학 준비",
+      "en": "KIST Research Intern — neuromorphic & SNN research (May 2026 – Jan 2027) · preparing for a master's program"
     },
     {
       "when": "2027 – 2028",
+      "phase": "future",
       "ko": "국내 석사과정 — 전공 연구 역량 심화, 연구 실적 확보, 박사 유학 준비",
-      "phase": "future"
+      "en": "Master's program in Korea — deepening research skills, building a publication record, preparing for doctoral study abroad"
     },
     {
       "when": "2029 – 2032",
+      "phase": "future",
       "ko": "박사과정 (미국 유학 희망) — 뉴로모픽 핵심 알고리즘·하드웨어 아키텍처 연구",
-      "phase": "future"
+      "en": "PhD program (hoping to study in the US) — core neuromorphic algorithms and hardware architecture"
     },
     {
       "when": "2032 –",
+      "phase": "future",
       "ko": "차세대 뉴로모픽 칩(Intel Loihi 계열) 연구원 — 목표",
-      "phase": "future"
+      "en": "Researcher on next-generation neuromorphic chips (Intel Loihi line) — goal"
     }
   ],
   "links": [

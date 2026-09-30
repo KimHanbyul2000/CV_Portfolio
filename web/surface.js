@@ -43,6 +43,13 @@ export async function mountSurface(container, overlay, cfg) {
       return { x: r.center[0] + r.radius * Math.cos(a), y: r.center[1] + r.radius * Math.sin(a) };
     });
   };
+  // 3D 라벨의 한/영 문구. 연도는 surface.json 의 now_year 한 곳에서 온다
+  const YEAR = C.now_year;
+  const TXT = {
+    ko: { now: `현재 ${YEAR}`, nowShallow: `현재 ${YEAR} — 가장 얕다`, future: "미래 기대값", depth: "깊이 · 전문성" },
+    en: { now: `Now ${YEAR}`, nowShallow: `Now ${YEAR} — the shallowest`, future: "expected future", depth: "Depth · expertise" },
+  };
+  let lang = "ko";
   const OWN_CUT = 0.3;       // 개별 곡면은 자기 꼭짓점의 30% 이상인 영역만 (render.py 와 동일)
   const L1_LABEL_Z = 2.7;    // L1 라벨 최소 높이 (render.py 와 동일)
 
@@ -184,9 +191,9 @@ export async function mountSurface(container, overlay, cfg) {
   });
   const cName = `<i>L<sub>now</sub></i> ${C.en}<br>${C.ko}`;
   const cLbl = label("", "Lnow");
-  const markLbl = label("현재 2026", "Lnow"); markLbl.classList.add("small");
+  const markLbl = label("", "Lnow"); markLbl.classList.add("small");
   const sLbl = label("<i>S</i>", "surface");
-  const axLbl = label("깊이 · 전문성<br>Depth", "axis"); axLbl.classList.add("axis");
+  const axLbl = label("", "axis"); axLbl.classList.add("axis");
   axLbl.at = cfg.depth_axis ? V(AX[0], AX[1], AXH + 0.25) : null;
 
   let u = U_MAX;
@@ -236,11 +243,13 @@ export async function mountSurface(container, overlay, cfg) {
     nowLeader.visible = H > C.h_now * 0.5 && !top;
     setSeg(nowLeader, V(0, -1.75, 0.05), V(0, 0, ht));
     if (H > C.h_now * 0.5) {
-      cLbl.innerHTML = cName + (top ? "<br>미래 기대값" : "<br><small>현재 2026 — 가장 얕다</small>");
+      cLbl.innerHTML = cName + (top ? `<br>${TXT[lang].future}` : `<br><small>${TXT[lang].nowShallow}</small>`);
       cLbl.at = top ? V(0, 0, zf(0, 0, g, H) + 0.25) : V(0, -1.75, 0);
       cLbl.below = !top;
     } else cLbl.at = null;
 
+    markLbl.textContent = TXT[lang].now;
+    axLbl.textContent = TXT[lang].depth;
     const e = [P[1].x * 1.95, P[1].y * 1.95];
     sLbl.at = showSum && g > 0.6 ? V(e[0], e[1], zf(e[0], e[1], g, H) + 0.1) : null;
   }
@@ -293,5 +302,6 @@ export async function mountSurface(container, overlay, cfg) {
     // 곡면 표시: sum = 전체(합), own = 개별 곡면
     setSurfaces({ sum, own }) { showSum = sum; showOwn = own; apply(); },
     setTheme,
+    setLang(v) { lang = v === "en" ? "en" : "ko"; apply(); },
   };
 }

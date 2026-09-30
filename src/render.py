@@ -22,6 +22,7 @@ VID = ROOT / "assets" / "video"
 BG = sf.CFG["background"]
 ORANGE = sf.SURF["color"]
 C = sf.CENTER
+YEAR = C["now_year"]   # "현재" 연도 — data/surface.json 한 곳에서 관리
 PLANE = "#2a3350"
 INK = "#e8ecf5"
 MUTED = "#8b93a8"
@@ -33,7 +34,7 @@ plt.rcParams["axes.unicode_minus"] = False
 STAGES = {
     1: ("STAGE 1 · Foundations", "학문적 기초 — 세 기둥. 바이오메디컬공학은 낮지만 가장 넓은 바닥을 딛는다"),
     2: ("STAGE 2 · Integration", "융합 — 각 기둥이 자기 곡면을 만들고, 그 중첩이 전체 곡면 S"),
-    3: ("STAGE 3 · Now (2026)", "현재 — 뉴로모픽 반도체 L_now 는 아직 가장 낮다. 그 곡면이 더해져 전체가 약간 오른다"),
+    3: (f"STAGE 3 · Now ({YEAR})", "현재 — 뉴로모픽 반도체 L_now 는 아직 가장 낮다. 그 곡면이 더해져 전체가 약간 오른다"),
     4: ("STAGE 4 · Future (expected)", "미래 기대값 — L_now 가 가장 높아지며 전체 곡면을 끌어올린다"),
 }
 ZMAX = 5.0
@@ -132,7 +133,7 @@ def draw(ax, u, labels=True, label_size=13, own=False):
             ax.scatter([0], [0], [hn], s=60, marker="D", color=C["color"],
                        edgecolor="white", linewidth=0.8, zorder=5, depthshade=False)
             if labels:
-                ax.text(0.18, -0.18, hn, "현재 2026", color=C["color"],
+                ax.text(0.18, -0.18, hn, f"현재 {YEAR}", color=C["color"],
                         fontsize=label_size - 2, ha="left", va="center", zorder=6, bbox=LABEL_BOX)
         ax.scatter([0], [0], [ht], s=140, color=C["color"], edgecolor="white",
                    linewidth=1.0, alpha=0.7 if future else 1.0, zorder=5, depthshade=False)
@@ -148,7 +149,7 @@ def draw(ax, u, labels=True, label_size=13, own=False):
                 lx, ly = 0.0, -1.75
                 ax.plot([lx, 0], [ly, 0], [0.05, ht], color=C["color"], linewidth=0.9,
                         alpha=0.8, zorder=5)
-                ax.text(lx, ly, 0.0, name + "\n현재 2026 — 가장 얕다", color=C["color"],
+                ax.text(lx, ly, 0.0, name + f"\n현재 {YEAR} — 가장 얕다", color=C["color"],
                         fontsize=label_size, ha="center", va="top", zorder=6,
                         fontweight="bold", bbox=LABEL_BOX)
             ax.text(0.12, -0.12, -0.05, "$P_{now}$", color=C["color"],
@@ -260,6 +261,23 @@ def stills():
     plt.close(fig)
 
     decomposition()
+    og_image()
+
+
+def og_image():
+    """링크 미리보기 이미지 (1200×630, og:image 권장 비율 1.91:1). 두 사이트가 함께 쓴다."""
+    fig = new_fig(12, 6.3, 100)
+    ax = fig.add_axes([0.3, -0.12, 0.72, 1.22], projection="3d")
+    ax.view_init(elev=24, azim=AZIM + 5)
+    draw(ax, sf.U_MAX, labels=False)
+    fig.text(0.05, 0.8, "Kim Hanbyul", color=INK, fontsize=30, fontweight="bold", va="top")
+    fig.text(0.05, 0.68, "Biomedical × Semiconductor\n× Medical AI", color=MUTED, fontsize=17,
+             va="top", linespacing=1.4)
+    fig.text(0.05, 0.5, "→ Neuromorphic\n    Semiconductor", color=C["color"], fontsize=19,
+             va="top", fontweight="bold", linespacing=1.3)
+    fig.text(0.05, 0.14, "kimhanbyul2000.github.io/CV_Portfolio", color=MUTED, fontsize=11)
+    fig.savefig(IMG / "og.png", facecolor=BG)
+    plt.close(fig)
 
 
 # 영상 시간표: (구간 길이 초, u 시작, u 끝)
