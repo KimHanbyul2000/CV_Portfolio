@@ -43,6 +43,7 @@
 | `index.html` | 홈페이지. `data/*.json` 을 fetch 해서 그린다 |
 | `assets/img/`, `assets/video/` | 생성 산출물. **추적한다**(포트폴리오 첨부물 자체이므로) |
 | `docs/개발노트.md` | **내부 설계 결정 기록** (테마, 언어 전환, 링크 미리보기, 곡면 표시 버튼, 분해도를 따로 둔 이유 등). 설계를 바꾸면 여기에 이유를 남긴다 |
+| `docs/링크_미리보기.md` | 미리보기 이미지 `og.png`, HTML `og:` 태그(자동), 저장소 Social preview(웹에서 직접 업로드), 캐시 |
 | `docs/배포_GitHub_Pages.md` | Pages 를 어떻게 켰는지, 배포 확인법, 첫 푸시 실패(HTTP 400)와 저장소 전용 `http.postBuffer` 설정 |
 | `.nojekyll` | Pages가 Jekyll 없이 서빙. 지우지 않는다 |
 
