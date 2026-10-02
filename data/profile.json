@@ -1,5 +1,6 @@
 {
   "_note": "홈페이지 본문의 단일 출처. index.html 이 이 파일을 읽어 그린다. 모든 문구는 ko/en 쌍. 본인이 준 사실만 적는다. convergence.body_ko 는 본인 작성 — 임의 수정 금지.",
+  "_terms_note": "타임라인 학년도 학기 구분(terms) — 학년도는 3월~이듬해 2월. s1=1학기(3~6월) summer=하계(7~8월) s2=2학기(9~12월) winter=동계(이듬해 1~2월). 각 칸은 {ko,en} 항목 배열. 본인이 준 사실만 적는다 — 비어 있으면 홈페이지에 '—'로 보인다. terms 키가 있는 항목에만 연도 호버·클릭 고정 패널이 생긴다.",
   "name": {
     "ko": "김한별",
     "en": "Kim Hanbyul"
@@ -159,7 +160,13 @@
       "phase": "past",
       "pillar": "L1",
       "ko": "건국대학교 GLOCAL캠퍼스 바이오메디컬공학과 입학 (코로나19 시기)",
-      "en": "Entered Konkuk University GLOCAL Campus, Biomedical Engineering (during COVID-19)"
+      "en": "Entered Konkuk University GLOCAL Campus, Biomedical Engineering (during COVID-19)",
+      "terms": {
+        "s1": [],
+        "summer": [],
+        "s2": [],
+        "winter": []
+      }
     },
     {
       "when": "2021 – 2022",
@@ -171,28 +178,80 @@
       "when": "2023",
       "phase": "past",
       "ko": "2학년 — 전공 입문, 오송 활동, 타 학과 탐색, 3D 관련 활동, 미국 방문",
-      "en": "Sophomore — introduction to the major, activities in Osong, exploring other departments, 3D-related activities, a visit to the US"
+      "en": "Sophomore — introduction to the major, activities in Osong, exploring other departments, 3D-related activities, a visit to the US",
+      "terms": {
+        "s1": [],
+        "summer": [],
+        "s2": [],
+        "winter": []
+      }
     },
     {
       "when": "2024",
       "phase": "past",
       "pillar": "L2",
       "ko": "3학년 — 충북 PRIDE 공유대학 시스템반도체 부전공 시작, 청주 오송생명과학단지·오창과학산업단지 실습, 서울·건대 활동, 대만·싱가포르·일본 방문",
-      "en": "Junior — began a System Semiconductor minor (Chungbuk PRIDE Shared University), practicums at the Osong Life Science Complex and Ochang Science Industrial Complex in Cheongju, activities in Seoul, visits to Taiwan, Singapore and Japan"
+      "en": "Junior — began a System Semiconductor minor (Chungbuk PRIDE Shared University), practicums at the Osong Life Science Complex and Ochang Science Industrial Complex in Cheongju, activities in Seoul, visits to Taiwan, Singapore and Japan",
+      "terms": {
+        "s1": [],
+        "summer": [],
+        "s2": [],
+        "winter": []
+      }
     },
     {
       "when": "2025",
       "phase": "past",
       "pillar": "L3",
       "ko": "4학년 — 전공 필수 완료, 대전 미래융합교육원 「건양대학교병원 바이오메디컬 인공지능」 과정(1,026시간)에서 코딩 집중 학습",
-      "en": "Senior — completed major requirements; intensive coding in the Konyang University Hospital Biomedical AI program (1,026 h) at the Future Convergence Education Center, Daejeon"
+      "en": "Senior — completed major requirements; intensive coding in the Konyang University Hospital Biomedical AI program (1,026 h) at the Future Convergence Education Center, Daejeon",
+      "terms": {
+        "s1": [],
+        "summer": [],
+        "s2": [],
+        "winter": []
+      }
     },
     {
       "when": "2026",
       "phase": "now",
       "pillar": "Lnow",
       "ko": "KIST 인턴 연구원 — 뉴로모픽·SNN 연구 (2026.05 – 2027.01) · 국가 R&D 소뇌모사 반도체 과제 참여연구원 · 석사과정 입학 준비",
-      "en": "KIST Research Intern — neuromorphic & SNN research (May 2026 – Jan 2027) · participating researcher in a national R&D project on cerebellum-inspired semiconductors · preparing for a master's program"
+      "en": "KIST Research Intern — neuromorphic & SNN research (May 2026 – Jan 2027) · participating researcher in a national R&D project on cerebellum-inspired semiconductors · preparing for a master's program",
+      "terms": {
+        "s1": [
+          {
+            "ko": "KIST 인턴 연구원 시작 — 뉴로모픽·SNN 연구 (2026.05)",
+            "en": "Started as KIST Research Intern — neuromorphic & SNN research (May 2026)"
+          },
+          {
+            "ko": "국가 R&D 소뇌모사 반도체 과제 참여연구원 (2026.05 –)",
+            "en": "Participating researcher, national R&D project on cerebellum-inspired semiconductors (from May 2026)"
+          }
+        ],
+        "summer": [
+          {
+            "ko": "KIST 인턴 연구원 · 국가 R&D 과제 참여 (계속)",
+            "en": "KIST Research Intern · national R&D project (continuing)"
+          }
+        ],
+        "s2": [
+          {
+            "ko": "KIST 인턴 연구원 (계속)",
+            "en": "KIST Research Intern (continuing)"
+          },
+          {
+            "ko": "국가 R&D 과제 참여 종료 (2026.12)",
+            "en": "National R&D project participation ends (Dec 2026)"
+          }
+        ],
+        "winter": [
+          {
+            "ko": "KIST 인턴 계약 종료 (2027.01)",
+            "en": "KIST internship contract ends (Jan 2027)"
+          }
+        ]
+      }
     },
     {
       "when": "2027 – 2028",
