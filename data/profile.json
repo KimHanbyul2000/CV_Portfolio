@@ -115,6 +115,11 @@
         "en": "National Scholarship for Science & Engineering — 2-year award, 4 semesters"
       },
       {
+        "when": "2023-2 · 2024-1",
+        "ko": "의조 (성적장학)",
+        "en": "Merit scholarship (Uijo)"
+      },
+      {
         "when": "2020-1",
         "ko": "입학금감축대응장학",
         "en": "Admission-fee reduction scholarship"
@@ -362,8 +367,8 @@
             "en": "Overseas field program — New Frontier"
           },
           {
-            "ko": "공모전장학 (국고혁신) · 다드림",
-            "en": "Contest scholarship · DreamPoint"
+            "ko": "공모전장학 (국고혁신) · 다드림 · 의조 (성적장학)",
+            "en": "Contest scholarship · DreamPoint · merit scholarship (Uijo)"
           }
         ],
         "winter": []
@@ -384,6 +389,10 @@
           {
             "ko": "국가우수장학금 (이공계)",
             "en": "National Scholarship for Science & Engineering"
+          },
+          {
+            "ko": "의조 (성적장학)",
+            "en": "Merit scholarship (Uijo)"
           }
         ],
         "summer": [
