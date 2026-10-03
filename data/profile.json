@@ -31,11 +31,127 @@
       "pi_en": "Dr. Jaewook Kim (KIST Center for Semiconductor Technology)",
       "period_ko": "참여 2026.05.01 – 2026.12.31 (8개월) · 전체 과제 2026.04 – 2028.12",
       "period_en": "Participation May 1 – Dec 31, 2026 (8 months) · whole project Apr 2026 – Dec 2028"
+    },
+    "logo": {
+      "_note": "KIST 이력 옆에 붙는 로고. 공식 CI 파일을 assets/img/logo/ 에 두고 src 를 채우면 보인다. 비어 있으면 그리지 않는다.",
+      "src": "",
+      "alt_ko": "KIST 뇌과학연구소",
+      "alt_en": "KIST Brain Science Institute"
     }
   },
   "contact": {
     "_note": "PDF 이력서(cv.html)에 쓰는 연락처. 메인 사이트(kimhanbyul2000.github.io)에 이미 공개된 메일.",
     "email": "rlagksquf1208@gmail.com"
+  },
+  "education": {
+    "_note": "학적 — 본인이 준 졸업·성적·학적증명서 기준(2026-10-03). 생년월일·학번·학위등록번호·증서번호·과목별 성적·학기별 GPA는 넣지 않는다. 영문 장학명은 Claude 번역.",
+    "school_ko": "건국대학교 GLOCAL캠퍼스",
+    "school_en": "Konkuk University GLOCAL Campus",
+    "dept_ko": "과학기술대학 ICT융합공학부 의학공학전공",
+    "dept_en": "College of Science and Technology — ICT Convergence Engineering / Biomedical Engineering",
+    "degree_ko": "공학사 (B.S.)",
+    "degree_en": "B.S.",
+    "minor_ko": "시스템반도체학과",
+    "minor_en": "Department of System Semiconductor Engineering",
+    "period_ko": "2020.03 – 2026.02 졸업",
+    "period_en": "Mar 2020 – Feb 2026 (graduated)",
+    "gpa": {
+      "overall": "4.23",
+      "scale": "4.50",
+      "pct": "97.3",
+      "major": "4.31",
+      "major_pct": "98.1",
+      "minor": "4.38",
+      "minor_pct": "98.8",
+      "credits": 149
+    },
+    "honors": [
+      "2020-1",
+      "2020-2",
+      "2023-2",
+      "2024-2",
+      "2025-1"
+    ],
+    "courses": [
+      {
+        "ko": "의학공학",
+        "en": "Biomedical engineering",
+        "list": [
+          "Biosignal and System",
+          "Biomedical Signal Processing",
+          "Digital System for BME",
+          "Instrumentation",
+          "Fundamentals of Electronic Medical Devices and Experiments",
+          "Electronic Circuit Laboratory for BME"
+        ]
+      },
+      {
+        "ko": "반도체",
+        "en": "Semiconductor",
+        "list": [
+          "Memory Semiconductor Devices",
+          "Semiconductor Equipment",
+          "Semiconductor Test and Packaging Process",
+          "Basic Semiconductor Test",
+          "Semiconductor Chemistry",
+          "Quantum Mechanics"
+        ]
+      },
+      {
+        "ko": "컴퓨터",
+        "en": "Computing",
+        "list": [
+          "Computer Architecture",
+          "Microprocessors & SOC",
+          "Computer Programming"
+        ]
+      }
+    ],
+    "scholarships": [
+      {
+        "when": "2024-1 – 2025-2",
+        "highlight": true,
+        "ko": "국가우수장학금 (이공계) — 2년 지원, 4개 학기",
+        "en": "National Scholarship for Science & Engineering — 2-year award, 4 semesters"
+      },
+      {
+        "when": "2020-1",
+        "ko": "입학금감축대응장학",
+        "en": "Admission-fee reduction scholarship"
+      },
+      {
+        "when": "2020-1",
+        "ko": "학업지원특별장학 1 (생활비성) · 2 (학비감면)",
+        "en": "Special academic support scholarship I (living costs) · II (tuition)"
+      },
+      {
+        "when": "2020-2 · 2023-2",
+        "ko": "공모전장학 (국고혁신)",
+        "en": "Contest scholarship (national innovation fund)"
+      },
+      {
+        "when": "2023-1 · 2023-2",
+        "ko": "다드림 (DreamPoint)",
+        "en": "DreamPoint scholarship"
+      },
+      {
+        "when": "2023-1",
+        "ko": "역량개발장학 Ⅲ (기숙사)",
+        "en": "Competency development scholarship III (dormitory)"
+      }
+    ],
+    "activities": [
+      {
+        "when": "2023-2",
+        "ko": "해외현장체험 — 뉴프런티어",
+        "en": "Overseas field program — New Frontier"
+      },
+      {
+        "when": "2024-2",
+        "ko": "해외문화탐방 (글로컬)",
+        "en": "Overseas cultural program (GLOCAL)"
+      }
+    ]
   },
   "pillars_intro": {
     "ko": "다양한 학문을 폭넓게 접했지만, 한때는 그것이 개별 깊이의 부족처럼 느껴졌습니다.",
@@ -48,8 +164,8 @@
       "title_en": "Biomedical Engineering — Major",
       "tagline_ko": "그 자체로 융합 학문 — 의학·전자·소프트웨어·IoT와 생체신호 처리를 한 전공 안에서 다룹니다",
       "tagline_en": "A convergent discipline in itself — medicine, electronics, software, IoT and biosignal processing within one major",
-      "where_ko": "건국대학교 GLOCAL캠퍼스 바이오메디컬공학과 (충주)",
-      "where_en": "Konkuk University GLOCAL Campus, Dept. of Biomedical Engineering (Chungju)",
+      "where_ko": "건국대학교 GLOCAL캠퍼스 과학기술대학 ICT융합공학부 의학공학전공 (충주) — 공학사, 2026.02 졸업",
+      "where_en": "Konkuk University GLOCAL Campus, College of Science and Technology — ICT Convergence Engineering / Biomedical Engineering (Chungju) — B.S., Feb 2026",
       "skills_ko": [
         "의료",
         "전자",
@@ -71,8 +187,8 @@
       "id": "L2",
       "title_ko": "반도체 (부전공)",
       "title_en": "Semiconductor — Minor",
-      "where_ko": "충북 PRIDE 공유대학 시스템반도체 (부전공, 2024–)",
-      "where_en": "Chungbuk PRIDE Shared University — System Semiconductor (minor, 2024–)",
+      "where_ko": "건국대학교 시스템반도체학과 부전공 (충북 PRIDE 공유대학, 2024–2026)",
+      "where_en": "Minor, Department of System Semiconductor Engineering, Konkuk University (Chungbuk PRIDE Shared University, 2024–2026)",
       "skills_ko": [
         "RISC-V",
         "반도체 공정",
@@ -130,6 +246,13 @@
   },
   "projects": [
     {
+      "name_ko": "ESP32-S3-BOX-3 기반 AI 비서 (졸업작품)",
+      "name_en": "AI assistant on ESP32-S3-BOX-3 (capstone)",
+      "when": "2024 – 2025",
+      "ko": "IoT 계열 프레임워크 제작 — 캡스톤디자인 1 · 2",
+      "en": "Built an IoT framework — Capstone Design 1 · 2"
+    },
+    {
       "name": "ai-research-harness",
       "href": "https://github.com/KimHanbyul2000/ai-research-harness",
       "when": "2026",
@@ -169,10 +292,41 @@
       "ko": "건국대학교 GLOCAL캠퍼스 바이오메디컬공학과 입학 (코로나19 시기)",
       "en": "Entered Konkuk University GLOCAL Campus, Biomedical Engineering (during COVID-19)",
       "terms": {
-        "s1": [],
+        "s1": [
+          {
+            "ko": "건국대학교 입학 (2020.03)",
+            "en": "Entered Konkuk University (Mar 2020)"
+          },
+          {
+            "ko": "우등",
+            "en": "Academic honors"
+          },
+          {
+            "ko": "입학금감축대응장학 · 학업지원특별장학 1·2",
+            "en": "Admission-fee reduction · special academic support scholarships I·II"
+          }
+        ],
         "summer": [],
-        "s2": [],
-        "winter": []
+        "s2": [
+          {
+            "ko": "의학공학전공 배정 (2020.11)",
+            "en": "Assigned to Biomedical Engineering major (Nov 2020)"
+          },
+          {
+            "ko": "우등",
+            "en": "Academic honors"
+          },
+          {
+            "ko": "공모전장학 (국고혁신)",
+            "en": "Contest scholarship (national innovation fund)"
+          }
+        ],
+        "winter": [
+          {
+            "ko": "입대 휴학 (2021.01)",
+            "en": "Leave of absence for military service (Jan 2021)"
+          }
+        ]
       }
     },
     {
@@ -187,9 +341,31 @@
       "ko": "2학년 — 전공 입문, 오송 활동, 타 학과 탐색, 3D 관련 활동, 미국 방문",
       "en": "Sophomore — introduction to the major, activities in Osong, exploring other departments, 3D-related activities, a visit to the US",
       "terms": {
-        "s1": [],
+        "s1": [
+          {
+            "ko": "제대 복학 (2023.01)",
+            "en": "Returned after military service (Jan 2023)"
+          },
+          {
+            "ko": "다드림 · 역량개발장학 Ⅲ",
+            "en": "DreamPoint · competency development scholarship III"
+          }
+        ],
         "summer": [],
-        "s2": [],
+        "s2": [
+          {
+            "ko": "우등",
+            "en": "Academic honors"
+          },
+          {
+            "ko": "해외현장체험 — 뉴프런티어",
+            "en": "Overseas field program — New Frontier"
+          },
+          {
+            "ko": "공모전장학 (국고혁신) · 다드림",
+            "en": "Contest scholarship · DreamPoint"
+          }
+        ],
         "winter": []
       }
     },
@@ -200,9 +376,44 @@
       "ko": "3학년 — 충북 PRIDE 공유대학 시스템반도체 부전공 시작, 청주 오송생명과학단지·오창과학산업단지 실습, 서울·건대 활동, 대만·싱가포르·일본 방문",
       "en": "Junior — began a System Semiconductor minor (Chungbuk PRIDE Shared University), practicums at the Osong Life Science Complex and Ochang Science Industrial Complex in Cheongju, activities in Seoul, visits to Taiwan, Singapore and Japan",
       "terms": {
-        "s1": [],
-        "summer": [],
-        "s2": [],
+        "s1": [
+          {
+            "ko": "시스템반도체학과 부전공 과목 시작 — Memory Semiconductor Devices, Semiconductor Equipment",
+            "en": "Began minor coursework — Memory Semiconductor Devices, Semiconductor Equipment"
+          },
+          {
+            "ko": "국가우수장학금 (이공계)",
+            "en": "National Scholarship for Science & Engineering"
+          }
+        ],
+        "summer": [
+          {
+            "ko": "Semiconductor Test and Packaging Process",
+            "en": "Semiconductor Test and Packaging Process"
+          },
+          {
+            "ko": "캡스톤디자인 1",
+            "en": "Capstone Design 1"
+          }
+        ],
+        "s2": [
+          {
+            "ko": "우등",
+            "en": "Academic honors"
+          },
+          {
+            "ko": "Quantum Mechanics · Biomedical Signal Processing · Instrumentation",
+            "en": "Quantum Mechanics · Biomedical Signal Processing · Instrumentation"
+          },
+          {
+            "ko": "해외문화탐방 (글로컬)",
+            "en": "Overseas cultural program (GLOCAL)"
+          },
+          {
+            "ko": "국가우수장학금 (이공계)",
+            "en": "National Scholarship for Science & Engineering"
+          }
+        ],
         "winter": []
       }
     },
@@ -210,13 +421,44 @@
       "when": "2025",
       "phase": "past",
       "pillar": "L3",
-      "ko": "4학년 — 전공 필수 완료, 대전 미래융합교육원 「건양대학교병원 바이오메디컬 인공지능」 과정(1,026시간)에서 코딩 집중 학습",
-      "en": "Senior — completed major requirements; intensive coding in the Konyang University Hospital Biomedical AI program (1,026 h) at the Future Convergence Education Center, Daejeon",
+      "ko": "4학년 — 전공 필수 완료, 대전 미래융합교육원 「건양대학교병원 바이오메디컬 인공지능」 과정(1,026시간)에서 코딩 집중 학습 · 졸업작품 ESP32-S3-BOX-3 기반 AI 비서 · 2026.02 졸업 (공학사, GPA 4.23/4.50)",
+      "en": "Senior — completed major requirements; intensive coding in the Konyang University Hospital Biomedical AI program (1,026 h) at the Future Convergence Education Center, Daejeon; capstone: AI assistant on ESP32-S3-BOX-3 · graduated Feb 2026 (B.S., GPA 4.23/4.50)",
       "terms": {
-        "s1": [],
+        "s1": [
+          {
+            "ko": "우등",
+            "en": "Academic honors"
+          },
+          {
+            "ko": "Computer Architecture · Microprocessors & SOC",
+            "en": "Computer Architecture · Microprocessors & SOC"
+          },
+          {
+            "ko": "캡스톤디자인 1",
+            "en": "Capstone Design 1"
+          },
+          {
+            "ko": "국가우수장학금 (이공계)",
+            "en": "National Scholarship for Science & Engineering"
+          }
+        ],
         "summer": [],
-        "s2": [],
-        "winter": []
+        "s2": [
+          {
+            "ko": "캡스톤디자인 2 — ESP32-S3-BOX-3 기반 AI 비서 (IoT 프레임워크)",
+            "en": "Capstone Design 2 — AI assistant on ESP32-S3-BOX-3 (IoT framework)"
+          },
+          {
+            "ko": "국가우수장학금 (이공계)",
+            "en": "National Scholarship for Science & Engineering"
+          }
+        ],
+        "winter": [
+          {
+            "ko": "졸업 — 공학사 (2026.02)",
+            "en": "Graduated — B.S. (Feb 2026)"
+          }
+        ]
       }
     },
     {

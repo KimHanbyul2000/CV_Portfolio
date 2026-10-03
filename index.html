@@ -23,6 +23,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="web/cv.css">
 <style>
 /* 색 단일 출처. 범주 색(기둥·곡면)은 data/surface.json 과 같은 값이다. */
 :root{
@@ -221,6 +222,7 @@ footer a{margin-right:14px}
 .cvbtns a{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;font-size:14px;
   text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--panel);transition:border-color .2s ease,transform .2s ease}
 .cvbtns a:hover{border-color:var(--c-l2);transform:translateY(-1px)}
+.cvbody{margin-top:20px;font-size:15.5px}
 .cvbtns a.main{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 </style>
 </head>
@@ -304,6 +306,11 @@ footer a{margin-right:14px}
     <p lang="en">d<sub>i</sub> is the distance to pillar <i>i</i> and σ<sub>i</sub> the width of its surface. <i>m</i><sub>i</sub>(θ) is a directional modulation used only for <i>L</i><sub>2</sub>; it equals 1 directly above the pillar, so the peak height is kept while ridges and valleys form around it. Because it is a sum, the overall surface passes above every pillar. The 'Surface' button on the 3D view cycles through four displays: sum · individual · sum + individual · off.</p>
   </section>
 
+  <section id="cv">
+    <h2><span lang="ko">이력</span><span lang="en">CV</span> <span class="en"><span lang="ko">PDF 이력서와 같은 내용</span><span lang="en">same content as the PDF</span></span></h2>
+    <div class="cvbody" id="cvbody"></div>
+  </section>
+
   <section id="timeline">
     <h2><span lang="ko">경로</span><span lang="en">Timeline</span> <span class="en">2000 – 2032+</span></h2>
     <ol class="tl" id="tl"></ol>
@@ -332,6 +339,7 @@ footer a{margin-right:14px}
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script type="module">
 import { mountSurface, U_MAX } from "./web/surface.js";
+import { cvHTML } from "./web/cv.js";
 
 const root = document.documentElement;
 const $ = id => document.getElementById(id);
@@ -475,6 +483,7 @@ function render() {
   $("cvbtns").innerHTML = `
     <a class="main" href="assets/cv/KimHanbyul_CV_${L}.pdf" download>↓ ${L === "ko" ? "PDF 이력서" : "CV (PDF)"}</a>
     <a href="cv.html?lang=${L}">${L === "ko" ? "웹에서 보기" : "View on web"}</a>`;
+  $("cvbody").innerHTML = cvHTML(pf, L);
   $("pillars-intro").textContent = pf.pillars_intro[L];
   const colorVar = { L1: "--c-l1", L2: "--c-l2", L3: "--c-l3" };
   $("cards").innerHTML = pf.pillars.map((p, i) => `
@@ -496,6 +505,7 @@ function render() {
   $("tl").innerHTML = html;
   bindTerms();
   $("links").innerHTML = pf.links.map(l => `<a href="${esc(l.href)}">${esc(l.label)}</a>`).join("")
+    + `<a href="mailto:${esc(pf.contact.email)}">${esc(pf.contact.email)}</a>`
     + `<div style="margin-top:8px">© ${esc(pf.name.en)}</div>`
     + `<div>${L === "ko" ? "마지막 업데이트" : "Last updated"}: <time id="upd" datetime="${updated}">${updated}</time></div>`;
   $("surf").textContent = (L === "ko" ? "곡면: " : "Surface: ") + SURF_MODES[surfMode][L];

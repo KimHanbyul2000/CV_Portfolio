@@ -5,12 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kim Hanbyul — CV</title>
 <meta name="robots" content="noindex">
-<!-- 인쇄용 이력서. data/profile.json 을 읽어 그린다. ?lang=en 이면 영어.
+<!-- 인쇄용 이력서. data/profile.json 을 읽어 그린다. ?lang=en 이면 영어. 본문은 web/cv.js — 홈페이지 "이력" 절과 같은 함수라 정보가 항상 같다.
      PDF 는 src/cv_pdf.py 가 이 페이지를 인쇄해 assets/cv/ 에 만든다. 화면에서 직접 인쇄해도 같은 모양이다. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="web/cv.css">
 <style>
-:root{--ink:#141824;--muted:#5d6475;--line:#e1e4ec;--accent:#e0306f;--l1:#1a9e92;--l2:#2f6fe0;--l3:#8a55e6;--paper:#ffffff;--desk:#eef0f5}
+:root{--ink:#141824;--muted:#5d6475;--line:#e1e4ec;--panel:#f6f7fa;--c-in:#e0306f;--c-l1:#1a9e92;--c-l2:#2f6fe0;--c-l3:#8a55e6;--paper:#ffffff;--desk:#eef0f5}
 @page{size:A4;margin:14mm 15mm}
 *{box-sizing:border-box}
 html,body{margin:0}
@@ -33,20 +34,6 @@ h1 small{font-size:11pt;color:var(--muted);font-weight:500;margin-left:8px}
 .contact{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:9pt;color:var(--muted)}
 .contact a{color:inherit;text-decoration:none}
 .contact b{color:var(--ink);font-weight:500}
-section{margin:0 0 13px;break-inside:avoid}
-h2{font-size:9pt;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 6px;padding-bottom:3px;border-bottom:1px solid var(--line)}
-h2 span.sub{color:var(--muted);letter-spacing:.04em;margin-left:6px;text-transform:none;font-weight:500}
-.row{display:grid;grid-template-columns:30mm 1fr;gap:0 12px;margin:0 0 7px}
-.row .when{color:var(--muted);font-size:9pt;line-height:1.4;padding-top:2px;overflow-wrap:anywhere}
-.row .t{font-weight:700}
-.row .w{color:var(--muted);font-size:9pt}
-.row p{margin:2px 0 0}
-.box{border-left:3px solid var(--accent);background:#fbf4f7;padding:6px 10px;margin-top:6px;font-size:9pt;color:var(--muted)}
-.box .t{color:var(--ink);font-weight:500;font-size:9.5pt}
-.chips{display:flex;flex-wrap:wrap;gap:3px 5px;margin-top:3px}
-.chip{font-size:8.5pt;border:1px solid var(--line);border-radius:999px;padding:0 7px;color:var(--ink)}
-.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:1px}
-.proj a{color:var(--ink);font-weight:700;text-decoration:none}
 footer{margin-top:16px;padding-top:6px;border-top:1px solid var(--line);font-size:8pt;color:var(--muted);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
 </style>
 </head>
@@ -57,6 +44,7 @@ footer{margin-top:16px;padding-top:6px;border-top:1px solid var(--line);font-siz
 </div>
 <main class="sheet" id="cv"></main>
 <script type="module">
+import { cvHTML } from "./web/cv.js";
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 // 언어: ?lang= 이 우선, 없으면 홈페이지와 같은 localStorage "lang", 기본 한국어
@@ -66,13 +54,7 @@ L = L === "en" ? "en" : "ko";
 document.documentElement.lang = L;
 
 const pf = await fetch("data/profile.json").then(r => r.json());
-const T = (o, k) => o[`${k}_${L}`];
 const K = (ko, en) => L === "ko" ? ko : en;
-const c = pf.current, pj = c.project;
-const color = { L1: "var(--l1)", L2: "var(--l2)", L3: "var(--l3)" };
-// 학력·교육의 연도는 타임라인에서 같은 기둥(pillar)을 가진 항목의 연도를 쓴다
-const yearOf = id => pf.timeline.find(t => t.pillar === id)?.when ?? "";
-const military = pf.timeline.find(t => t.when.startsWith("2021"));
 const site = pf.links.find(l => l.label === "Home")?.href ?? "";
 const gh = pf.links.find(l => l.label === "GitHub")?.href ?? "";
 const portfolio = site + "CV_Portfolio/";
@@ -91,57 +73,7 @@ $("cv").innerHTML = `
     </div>
   </header>
 
-  <section>
-    <h2>${K("현재", "Current position")}</h2>
-    <div class="row">
-      <div class="when">${esc(T(c, "period"))}</div>
-      <div>
-        <div class="t">${esc(c.org)} · ${esc(T(c, "role"))}</div>
-        <p>${esc(T(c, "detail"))}</p>
-        ${pj ? `<div class="box">
-          <div>${K("국가 R&D 과제", "National R&D project")} · ${esc(T(pj, "role"))}</div>
-          <div class="t">${esc(T(pj, "title"))}</div>
-          <div>${esc(T(pj, "program"))} · ${esc(pj.number)}</div>
-          <div>${K("과제책임자", "PI")}: ${esc(T(pj, "pi"))} · ${esc(T(pj, "period"))}</div>
-        </div>` : ""}
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>${K("학력 · 교육", "Education & training")}</h2>
-    ${pf.pillars.map(p => `
-    <div class="row">
-      <div class="when">${esc(yearOf(p.id))}</div>
-      <div>
-        <div class="t"><span class="dot" style="background:${color[p.id]}"></span>${esc(T(p, "title"))}</div>
-        <div class="w">${esc(T(p, "where"))}</div>
-      </div>
-    </div>`).join("")}
-  </section>
-
-  <section>
-    <h2>${K("기술", "Skills")}</h2>
-    ${pf.pillars.map(p => `
-    <div class="row">
-      <div class="when">${esc(T(p, "title").split(/\s[—(]/)[0])}</div>
-      <div class="chips">${T(p, "skills").map(s => `<span class="chip">${esc(s)}</span>`).join("")}</div>
-    </div>`).join("")}
-  </section>
-
-  <section class="proj">
-    <h2>${K("프로젝트", "Projects")}</h2>
-    ${pf.projects.map(p => `
-    <div class="row">
-      <div class="when">${esc(p.when ?? "")}</div>
-      <div><a href="${esc(p.href)}">${esc(p.name)}</a><p>${esc(p[L])}</p></div>
-    </div>`).join("")}
-  </section>
-
-  ${military ? `<section>
-    <h2>${K("병역", "Military service")}</h2>
-    <div class="row"><div class="when">${esc(military.when)}</div><div>${esc(military[L])}</div></div>
-  </section>` : ""}
+  ${cvHTML(pf, L)}
 
   <footer>
     <span>${K("작성일", "Updated")} ${today}</span>
