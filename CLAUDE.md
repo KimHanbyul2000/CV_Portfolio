@@ -41,6 +41,8 @@
 | `src/render.py` | PNG 5장 + MP4 생성 |
 | `web/surface.js` | 곡면 수식 (JS, three.js 인터랙티브) |
 | `index.html` | 홈페이지. `data/*.json` 을 fetch 해서 그린다 |
+| `cv.html` | 인쇄용 이력서(A4 한 장). `profile.json` 을 읽는다. `?lang=en` 이면 영어 |
+| `src/cv_pdf.py` | `cv.html` 을 인쇄해 `assets/cv/KimHanbyul_CV_{ko,en}.pdf` 생성 (playwright). profile.json 을 고치면 다시 돌린다 |
 | `assets/img/`, `assets/video/` | 생성 산출물. **추적한다**(포트폴리오 첨부물 자체이므로) |
 | `docs/개발노트.md` | **내부 설계 결정 기록** (테마, 언어 전환, 링크 미리보기, 곡면 표시 버튼, 분해도를 따로 둔 이유 등). 설계를 바꾸면 여기에 이유를 남긴다 |
 | `docs/링크_미리보기.md` | 미리보기 이미지 `og.png`, HTML `og:` 태그(자동), 저장소 Social preview(웹에서 직접 업로드), 캐시 |
@@ -80,6 +82,7 @@ H(u)     = h_now·ease(u-2) + (h_future-h_now)·ease(u-3)
 pip install -r requirements.txt       # numpy, matplotlib, imageio-ffmpeg(번들 ffmpeg)
 python3 src/render.py                  # PNG 5장 (~2초)
 python3 src/render.py --video          # + MP4 20초 1920×1080 (~1분)
+python3 src/cv_pdf.py                  # PDF 이력서 한·영 (pip install playwright && python3 -m playwright install chromium)
 ```
 
 산출물: `stage1~4.png`, `overview.png`(4단계 나란히), `decomposition.png`(개별 곡면 + 합), `hero.png`, `og.png`(링크 미리보기 1200×630 — 사용자 사이트도 씀), `convergence.mp4`.

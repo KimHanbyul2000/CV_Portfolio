@@ -216,6 +216,12 @@ footer a{margin-right:14px}
   border-radius:0 10px 10px 0;font-size:14px;color:var(--muted)}
 .proj .pt{color:var(--ink);font-weight:500;font-size:15px;margin:2px 0 6px}
 .proj .lab{font-size:12px;letter-spacing:.04em;color:var(--c-in);font-weight:700}
+/* PDF 이력서 — assets/cv/ 는 src/cv_pdf.py 가 cv.html 을 인쇄해 만든다 */
+.cvbtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.cvbtns a{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;font-size:14px;
+  text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--panel);transition:border-color .2s ease,transform .2s ease}
+.cvbtns a:hover{border-color:var(--c-l2);transform:translateY(-1px)}
+.cvbtns a.main{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 </style>
 </head>
 <body>
@@ -231,6 +237,7 @@ footer a{margin-right:14px}
     <span class="role" id="role"></span>
     <p class="detail" id="detail"></p>
     <div class="proj" id="proj"></div>
+    <div class="cvbtns" id="cvbtns"></div>
   </header>
 
   <div class="stage" id="stage">
@@ -438,6 +445,17 @@ function bindTerms() {
   }
 }
 
+// 마지막 업데이트 — 기본 브랜치의 최신 커밋 날짜(KST). 실패하면 적어 둔 날짜를 그대로 쓴다
+let updated = "2026-10-03";
+fetch("https://api.github.com/repos/KimHanbyul2000/CV_Portfolio/commits?per_page=1")
+  .then(r => r.ok ? r.json() : Promise.reject())
+  .then(c => {
+    updated = new Date(c[0].commit.committer.date).toLocaleDateString("sv-SE", { timeZone: "Asia/Seoul" });
+    const el = $("upd");
+    if (el) { el.textContent = updated; el.setAttribute("datetime", updated); }
+  })
+  .catch(() => {});
+
 // 본문 그리기 — 언어가 바뀌면 다시 부른다
 function render() {
   const L = langNow(), T = (o, k) => o[`${k}_${L}`];
@@ -454,6 +472,9 @@ function render() {
     <div class="pt">${esc(T(pj, "title"))}</div>
     <div>${esc(T(pj, "program"))} · ${esc(pj.number)}</div>
     <div>${L === "ko" ? "과제책임자" : "PI"}: ${esc(T(pj, "pi"))} · ${esc(T(pj, "period"))}</div>` : "";
+  $("cvbtns").innerHTML = `
+    <a class="main" href="assets/cv/KimHanbyul_CV_${L}.pdf" download>↓ ${L === "ko" ? "PDF 이력서" : "CV (PDF)"}</a>
+    <a href="cv.html?lang=${L}">${L === "ko" ? "웹에서 보기" : "View on web"}</a>`;
   $("pillars-intro").textContent = pf.pillars_intro[L];
   const colorVar = { L1: "--c-l1", L2: "--c-l2", L3: "--c-l3" };
   $("cards").innerHTML = pf.pillars.map((p, i) => `
@@ -475,7 +496,8 @@ function render() {
   $("tl").innerHTML = html;
   bindTerms();
   $("links").innerHTML = pf.links.map(l => `<a href="${esc(l.href)}">${esc(l.label)}</a>`).join("")
-    + `<div style="margin-top:8px">© ${esc(pf.name.en)}</div>`;
+    + `<div style="margin-top:8px">© ${esc(pf.name.en)}</div>`
+    + `<div>${L === "ko" ? "마지막 업데이트" : "Last updated"}: <time id="upd" datetime="${updated}">${updated}</time></div>`;
   $("surf").textContent = (L === "ko" ? "곡면: " : "Surface: ") + SURF_MODES[surfMode][L];
   if (view) { view.setLang(L); setU(view.getU()); }
 }
