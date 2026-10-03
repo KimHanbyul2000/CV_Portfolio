@@ -23,6 +23,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="web/cv.css">
 <style>
 /* 색 단일 출처. 범주 색(기둥·곡면)은 data/surface.json 과 같은 값이다. */
 :root{
@@ -125,6 +126,76 @@ th{color:var(--muted);font-weight:500;font-size:13.5px}
 .tl li.div::before{display:none}
 .tl .div{padding:6px 0 18px 32px;color:var(--muted);font-size:13px;letter-spacing:.05em}
 
+/* 학년도 패널 — 연도에 올리면 펼치고, 클릭하면 고정. 학년도 = 3월 ~ 이듬해 2월 (자세한 결정은 docs/개발노트.md) */
+.tl{--ease:cubic-bezier(.22,.8,.24,1)}
+.tl .yr{appearance:none;background:none;border:0;padding:2px 8px 2px 0;margin:0;font:inherit;color:inherit;
+  font-weight:700;font-size:14.5px;display:inline-flex;align-items:center;gap:6px;cursor:pointer;border-radius:6px;
+  transition:color .2s ease}
+.tl .yr .y{border-bottom:1px dashed color-mix(in srgb,var(--muted) 60%,transparent);transition:border-color .2s ease}
+.tl .yr .chev{width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;
+  transform:translateY(-2px) rotate(45deg);opacity:.45;transition:transform .35s var(--ease),opacity .2s ease}
+.tl .yr .pin{font-size:11px;font-weight:500;padding:0 7px;border-radius:999px;border:1px solid currentColor;
+  opacity:0;transform:scale(.8);transition:opacity .2s ease,transform .25s var(--ease)}
+.tl .yr:hover,.tl li.open .yr,.tl li.pinned .yr{color:var(--c-l2)}
+.tl .yr:hover .y,.tl li.open .yr .y,.tl li.pinned .yr .y{border-color:currentColor}
+.tl li.open .yr .chev,.tl li.pinned .yr .chev{transform:translateY(1px) rotate(225deg);opacity:.9}
+.tl li.pinned .yr .pin{opacity:1;transform:none}
+.tl .yr:focus-visible{outline:2px solid var(--c-l2);outline-offset:2px}
+
+.terms{display:grid;grid-template-rows:0fr;opacity:0;margin-top:0;
+  transition:grid-template-rows .42s var(--ease),opacity .28s ease,margin-top .42s var(--ease)}
+.tl li.open .terms,.tl li.pinned .terms{grid-template-rows:1fr;opacity:1;margin-top:12px}
+.terms-in{min-height:0;overflow:hidden}
+.terms-box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px 16px;
+  transform:translateY(-6px);transition:transform .42s var(--ease),border-color .25s ease}
+.tl li.open .terms-box,.tl li.pinned .terms-box{transform:none}
+.tl li.pinned .terms-box{border-color:color-mix(in srgb,var(--c-l2) 45%,var(--line))}
+.terms-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap;
+  font-size:13px;color:var(--muted);margin-bottom:10px}
+.terms-head b{color:var(--ink);font-weight:500;font-size:14px}
+
+/* 4칸 막대 — 폭은 개월 수 비율 (4 : 2 : 4 : 2) */
+.tbar,.tcols{display:grid;grid-template-columns:4fr 2fr 4fr 2fr;gap:4px}
+.seg{--tc:var(--c-l2);position:relative;border-radius:8px;padding:7px 8px;min-width:0;line-height:1.25;
+  background:color-mix(in srgb,var(--tc) 16%,transparent);cursor:default;
+  opacity:0;transform:scaleX(.7);transform-origin:left center;
+  transition:opacity .3s ease,transform .45s var(--ease),background-color .2s ease;transition-delay:calc(var(--i) * 45ms)}
+.seg.brk{--tc:var(--c-l1);background:repeating-linear-gradient(135deg,
+  color-mix(in srgb,var(--tc) 13%,transparent) 0 6px,color-mix(in srgb,var(--tc) 6%,transparent) 6px 12px)}
+.tl li.open .seg,.tl li.pinned .seg{opacity:1;transform:none}
+.seg b{display:block;font-size:12.5px;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.seg small{display:block;font-size:11px;color:var(--muted);white-space:nowrap}
+.seg.now::after{content:"";position:absolute;top:7px;right:7px;width:7px;height:7px;border-radius:50%;
+  background:var(--c-in);box-shadow:0 0 0 0 var(--c-in);animation:nowpulse 2.2s ease-out infinite}
+@keyframes nowpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--c-in) 55%,transparent)}
+  70%,100%{box-shadow:0 0 0 7px transparent}}
+.tcols{margin-top:10px}
+.tcol{min-width:0;font-size:13.5px;line-height:1.55;padding:2px 4px;border-radius:8px;
+  opacity:0;transform:translateY(4px);transition:opacity .3s ease,transform .4s var(--ease),background-color .2s ease;
+  transition-delay:calc(120ms + var(--i) * 45ms)}
+.tl li.open .tcol,.tl li.pinned .tcol{opacity:1;transform:none}
+.tcol .tn{display:none;font-size:12px;font-weight:700;color:var(--muted);margin-bottom:2px}
+.tcol p{margin:0 0 6px}
+.tcol .none{color:var(--muted);opacity:.6}
+/* 칸에 올리면 막대와 내용을 함께 강조 */
+.tl li .terms[data-hl] .seg,.tl li .terms[data-hl] .tcol{opacity:.45}
+.tl li .terms[data-hl="s1"] [data-t="s1"],.tl li .terms[data-hl="summer"] [data-t="summer"],
+.tl li .terms[data-hl="s2"] [data-t="s2"],.tl li .terms[data-hl="winter"] [data-t="winter"]{opacity:1}
+.tl li .terms[data-hl="s1"] .tcol[data-t="s1"],.tl li .terms[data-hl="summer"] .tcol[data-t="summer"],
+.tl li .terms[data-hl="s2"] .tcol[data-t="s2"],.tl li .terms[data-hl="winter"] .tcol[data-t="winter"]{background:color-mix(in srgb,var(--c-l2) 7%,transparent)}
+.tl li .terms[data-hl] .seg,.tl li .terms[data-hl] .tcol{transition-delay:0s}
+/* 좁은 화면: 막대는 그대로, 내용은 칸 이름을 붙여 세로로 */
+@media (max-width:620px){
+  .tcols{grid-template-columns:1fr;gap:8px}
+  .tcol .tn{display:block}
+  .seg{padding:6px 6px}
+  .seg b{font-size:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  .terms,.terms-box,.seg,.tcol,.tl .yr .chev,.tl .yr .pin{transition:none!important}
+  .seg.now::after{animation:none}
+}
+
 /* 갤러리 */
 .gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-top:20px}
 .gal figure{margin:0}
@@ -146,6 +217,13 @@ footer a{margin-right:14px}
   border-radius:0 10px 10px 0;font-size:14px;color:var(--muted)}
 .proj .pt{color:var(--ink);font-weight:500;font-size:15px;margin:2px 0 6px}
 .proj .lab{font-size:12px;letter-spacing:.04em;color:var(--c-in);font-weight:700}
+/* PDF 이력서 — assets/cv/ 는 src/cv_pdf.py 가 cv.html 을 인쇄해 만든다 */
+.cvbtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.cvbtns a{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;font-size:14px;
+  text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--panel);transition:border-color .2s ease,transform .2s ease}
+.cvbtns a:hover{border-color:var(--c-l2);transform:translateY(-1px)}
+.cvbody{margin-top:20px;font-size:15.5px}
+.cvbtns a.main{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 </style>
 </head>
 <body>
@@ -161,6 +239,7 @@ footer a{margin-right:14px}
     <span class="role" id="role"></span>
     <p class="detail" id="detail"></p>
     <div class="proj" id="proj"></div>
+    <div class="cvbtns" id="cvbtns"></div>
   </header>
 
   <div class="stage" id="stage">
@@ -227,6 +306,11 @@ footer a{margin-right:14px}
     <p lang="en">d<sub>i</sub> is the distance to pillar <i>i</i> and σ<sub>i</sub> the width of its surface. <i>m</i><sub>i</sub>(θ) is a directional modulation used only for <i>L</i><sub>2</sub>; it equals 1 directly above the pillar, so the peak height is kept while ridges and valleys form around it. Because it is a sum, the overall surface passes above every pillar. The 'Surface' button on the 3D view cycles through four displays: sum · individual · sum + individual · off.</p>
   </section>
 
+  <section id="cv">
+    <h2><span lang="ko">이력</span><span lang="en">CV</span> <span class="en"><span lang="ko">PDF 이력서와 같은 내용</span><span lang="en">same content as the PDF</span></span></h2>
+    <div class="cvbody" id="cvbody"></div>
+  </section>
+
   <section id="timeline">
     <h2><span lang="ko">경로</span><span lang="en">Timeline</span> <span class="en">2000 – 2032+</span></h2>
     <ol class="tl" id="tl"></ol>
@@ -255,6 +339,7 @@ footer a{margin-right:14px}
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script type="module">
 import { mountSurface, U_MAX } from "./web/surface.js";
+import { cvHTML } from "./web/cv.js";
 
 const root = document.documentElement;
 const $ = id => document.getElementById(id);
@@ -303,6 +388,82 @@ const SURF_MODES = [
 ];
 let surfMode = 0;
 
+// 학년도 패널 — 학년도는 3월 ~ 이듬해 2월. 연도에 올리면 펼치고(hover 가능한 기기), 클릭하면 고정한다
+const TERMS = [
+  { k: "s1", ko: "1학기", en: "Spring sem.", mk: "3–6월", me: "Mar–Jun", w: 4 },
+  { k: "summer", ko: "하계", en: "Summer", mk: "7–8월", me: "Jul–Aug", w: 2, brk: true },
+  { k: "s2", ko: "2학기", en: "Fall sem.", mk: "9–12월", me: "Sep–Dec", w: 4 },
+  { k: "winter", ko: "동계", en: "Winter", mk: "1–2월", me: "Jan–Feb", w: 2, brk: true },
+];
+const today = new Date(), mon = today.getMonth() + 1;
+const NOW_AY = mon >= 3 ? today.getFullYear() : today.getFullYear() - 1;
+const NOW_TERM = mon >= 3 && mon <= 6 ? "s1" : mon <= 8 && mon >= 7 ? "summer" : mon >= 9 ? "s2" : "winter";
+const pinned = new Set();   // 언어를 바꿔 다시 그려도 고정 상태를 유지한다
+function termsItem(t, L) {
+  const y = +t.when, id = `terms-${y}`, isPinned = pinned.has(y);
+  const segs = TERMS.map((d, i) => `
+      <div class="seg${d.brk ? " brk" : ""}${y === NOW_AY && d.k === NOW_TERM ? " now" : ""}" data-t="${d.k}" style="--i:${i}"
+        title="${y === NOW_AY && d.k === NOW_TERM ? (L === "ko" ? "지금" : "Now") : ""}">
+        <b>${d[L]}</b><small>${L === "ko" ? d.mk : d.me}</small></div>`).join("");
+  const cols = TERMS.map((d, i) => {
+    const items = t.terms[d.k] || [];
+    return `<div class="tcol" data-t="${d.k}" style="--i:${i}"><div class="tn">${d[L]} · ${L === "ko" ? d.mk : d.me}</div>${
+      items.length ? items.map(it => `<p>${esc(it[L])}</p>`).join("") : `<p class="none">—</p>`}</div>`;
+  }).join("");
+  return `<li class="${t.phase} has-terms${isPinned ? " pinned" : ""}" data-y="${y}">
+    <button class="yr" type="button" aria-expanded="${isPinned}" aria-controls="${id}"
+      title="${L === "ko" ? "클릭해서 고정 / 해제" : "Click to pin / unpin"}"><span class="y">${esc(t.when)}</span><span class="chev" aria-hidden="true"></span><span class="pin">${L === "ko" ? "고정" : "Pinned"}</span></button>
+    <div>${esc(t[L])}</div>
+    <div class="terms" id="${id}" role="region" aria-label="${L === "ko" ? `${y}학년도` : `Academic year ${y}`}"><div class="terms-in"><div class="terms-box">
+      <div class="terms-head"><b>${L === "ko" ? `${y}학년도` : `Academic year ${y}`}</b><span>${y}.03 – ${y + 1}.02</span></div>
+      <div class="tbar">${segs}</div>
+      <div class="tcols">${cols}</div>
+    </div></div></div>
+  </li>`;
+}
+const canHover = matchMedia("(hover: hover) and (pointer: fine)");
+function bindTerms() {
+  for (const li of document.querySelectorAll("#tl li.has-terms")) {
+    const btn = li.querySelector(".yr"), box = li.querySelector(".terms"), y = +li.dataset.y;
+    let tOpen = 0, tClose = 0;
+    const sync = () => btn.setAttribute("aria-expanded", String(li.classList.contains("open") || li.classList.contains("pinned")));
+    // 마우스가 연도를 스쳐 지나갈 때 줄줄이 펼쳐지지 않도록 짧게 기다렸다 연다. 닫을 때도 약간 늦춰 깜빡임을 막는다
+    btn.addEventListener("pointerenter", () => {
+      if (!canHover.matches) return;
+      clearTimeout(tClose);
+      tOpen = setTimeout(() => { li.classList.add("open"); sync(); }, 110);
+    });
+    li.addEventListener("pointerleave", () => {
+      clearTimeout(tOpen);
+      tClose = setTimeout(() => { li.classList.remove("open"); box.removeAttribute("data-hl"); sync(); }, 180);
+    });
+    li.addEventListener("pointerenter", () => clearTimeout(tClose));
+    btn.addEventListener("click", () => {
+      clearTimeout(tOpen);
+      if (pinned.has(y)) { pinned.delete(y); li.classList.remove("pinned", "open"); }
+      else { pinned.add(y); li.classList.add("pinned"); }
+      sync();
+    });
+    // 칸 강조: 막대나 내용 칸에 올리면 같은 학기의 막대·내용을 함께 밝힌다
+    box.addEventListener("pointerover", e => {
+      const k = e.target.closest("[data-t]")?.dataset.t;
+      k ? box.setAttribute("data-hl", k) : box.removeAttribute("data-hl");
+    });
+    box.addEventListener("pointerleave", () => box.removeAttribute("data-hl"));
+  }
+}
+
+// 마지막 업데이트 — 기본 브랜치의 최신 커밋 날짜(KST). 실패하면 적어 둔 날짜를 그대로 쓴다
+let updated = "2026-10-03";
+fetch("https://api.github.com/repos/KimHanbyul2000/CV_Portfolio/commits?per_page=1")
+  .then(r => r.ok ? r.json() : Promise.reject())
+  .then(c => {
+    updated = new Date(c[0].commit.committer.date).toLocaleDateString("sv-SE", { timeZone: "Asia/Seoul" });
+    const el = $("upd");
+    if (el) { el.textContent = updated; el.setAttribute("datetime", updated); }
+  })
+  .catch(() => {});
+
 // 본문 그리기 — 언어가 바뀌면 다시 부른다
 function render() {
   const L = langNow(), T = (o, k) => o[`${k}_${L}`];
@@ -319,6 +480,10 @@ function render() {
     <div class="pt">${esc(T(pj, "title"))}</div>
     <div>${esc(T(pj, "program"))} · ${esc(pj.number)}</div>
     <div>${L === "ko" ? "과제책임자" : "PI"}: ${esc(T(pj, "pi"))} · ${esc(T(pj, "period"))}</div>` : "";
+  $("cvbtns").innerHTML = `
+    <a class="main" href="assets/cv/KimHanbyul_CV_${L}.pdf" download>↓ ${L === "ko" ? "PDF 이력서" : "CV (PDF)"}</a>
+    <a href="cv.html?lang=${L}">${L === "ko" ? "웹에서 보기" : "View on web"}</a>`;
+  $("cvbody").innerHTML = cvHTML(pf, L);
   $("pillars-intro").textContent = pf.pillars_intro[L];
   const colorVar = { L1: "--c-l1", L2: "--c-l2", L3: "--c-l3" };
   $("cards").innerHTML = pf.pillars.map((p, i) => `
@@ -335,11 +500,14 @@ function render() {
     if (t.phase === "future" && last !== "future")
       html += `<li class="div">${L === "ko" ? "— 앞으로 · 목표 —" : "— Ahead · goals —"}</li>`;
     last = t.phase;
-    html += `<li class="${t.phase}"><span class="when">${esc(t.when)}</span>${esc(t[L])}</li>`;
+    html += t.terms ? termsItem(t, L) : `<li class="${t.phase}"><span class="when">${esc(t.when)}</span>${esc(t[L])}</li>`;
   }
   $("tl").innerHTML = html;
+  bindTerms();
   $("links").innerHTML = pf.links.map(l => `<a href="${esc(l.href)}">${esc(l.label)}</a>`).join("")
-    + `<div style="margin-top:8px">© ${esc(pf.name.en)}</div>`;
+    + `<a href="mailto:${esc(pf.contact.email)}">${esc(pf.contact.email)}</a>`
+    + `<div style="margin-top:8px">© ${esc(pf.name.en)}</div>`
+    + `<div>${L === "ko" ? "마지막 업데이트" : "Last updated"}: <time id="upd" datetime="${updated}">${updated}</time></div>`;
   $("surf").textContent = (L === "ko" ? "곡면: " : "Surface: ") + SURF_MODES[surfMode][L];
   if (view) { view.setLang(L); setU(view.getU()); }
 }

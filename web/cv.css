@@ -1,0 +1,31 @@
+/* 이력 본문 (web/cv.js) — 홈페이지와 cv.html 이 함께 쓴다. 크기는 em 이라 부모 글자 크기를 따른다 */
+.cv-sec{margin:0 0 1.3em;break-inside:avoid}
+.cv-h{font-size:.82em;letter-spacing:.12em;text-transform:uppercase;color:var(--c-in);margin:0 0 .6em;
+  padding-bottom:.3em;border-bottom:1px solid var(--line);font-weight:700}
+.cv-row{display:grid;grid-template-columns:8.5em 1fr;gap:0 1.1em;margin:0 0 .7em}
+.cv-when{color:var(--muted);font-size:.9em;line-height:1.45;padding-top:.12em;overflow-wrap:anywhere}
+.cv-t{font-weight:700}
+.cv-t a{color:inherit;text-decoration:none}
+.cv-t a:hover{text-decoration:underline}
+.cv-w{color:var(--muted);font-size:.9em}
+.cv-row p{margin:.15em 0 0}
+.cv-cur{display:flex;gap:.9em;align-items:flex-start}
+.cv-logo{height:3.2em;width:auto;flex:none;margin-top:.1em}
+.cv-box{border-left:3px solid var(--c-in);background:color-mix(in srgb,var(--c-in) 6%,transparent);
+  padding:.55em .9em;margin-top:.6em;font-size:.9em;color:var(--muted);border-radius:0 8px 8px 0}
+.cv-box .cv-t{color:var(--ink);font-weight:500;font-size:1.05em}
+.cv-gpa{margin:.35em 0 .1em;font-size:.95em}
+.cv-gpa b{color:var(--c-in)}
+.cv-dot{display:inline-block;width:.65em;height:.65em;border-radius:50%;margin-right:.5em;vertical-align:.05em}
+.cv-cg{display:flex;gap:.6em;align-items:baseline;margin-bottom:.35em}
+.cv-cl{flex:none;width:6.5em;font-size:.85em;color:var(--muted)}
+.cv-chips{display:flex;flex-wrap:wrap;gap:.25em .4em}
+.cv-chip{font-size:.85em;border:1px solid var(--line);border-radius:999px;padding:0 .65em;color:var(--ink);white-space:nowrap}
+.cv-hl{font-weight:700;color:var(--ink);background:color-mix(in srgb,var(--c-in) 10%,transparent);
+  border-radius:6px;padding:.05em .5em;display:inline-block;margin-left:-.5em}
+@media (max-width:620px){
+  .cv-row{grid-template-columns:1fr;gap:.1em}
+  .cv-cg{flex-direction:column;gap:.15em}
+  .cv-cl{width:auto}
+  .cv-chip{white-space:normal}
+}

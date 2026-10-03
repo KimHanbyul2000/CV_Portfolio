@@ -41,6 +41,9 @@
 | `src/render.py` | PNG 5장 + MP4 생성 |
 | `web/surface.js` | 곡면 수식 (JS, three.js 인터랙티브) |
 | `index.html` | 홈페이지. `data/*.json` 을 fetch 해서 그린다 |
+| `cv.html` | 인쇄용 이력서(A4). `profile.json` 을 읽는다. `?lang=en` 이면 영어 |
+| `web/cv.js`, `web/cv.css` | **이력 본문 렌더러 — 홈페이지 "이력" 절과 cv.html(PDF)이 함께 쓴다.** 두 곳 정보를 다르게 만들지 않는다 |
+| `src/cv_pdf.py` | `cv.html` 을 인쇄해 `assets/cv/KimHanbyul_CV_{ko,en}.pdf` 생성 (playwright). profile.json 을 고치면 다시 돌린다 |
 | `assets/img/`, `assets/video/` | 생성 산출물. **추적한다**(포트폴리오 첨부물 자체이므로) |
 | `docs/개발노트.md` | **내부 설계 결정 기록** (테마, 언어 전환, 링크 미리보기, 곡면 표시 버튼, 분해도를 따로 둔 이유 등). 설계를 바꾸면 여기에 이유를 남긴다 |
 | `docs/링크_미리보기.md` | 미리보기 이미지 `og.png`, HTML `og:` 태그(자동), 저장소 Social preview(웹에서 직접 업로드), 캐시 |
@@ -58,6 +61,7 @@
 | **문구는 항상 한·영 쌍으로 추가한다** | KR/EN 전환 버튼이 있다(2026-09-30). 한쪽만 넣으면 다른 언어에서 빈칸이 된다. 방식은 `docs/개발노트.md` "언어" 절 |
 | **"왜 모였나" 본문(`convergence.body_ko`)은 본인 작성 문구다** | 2026-09-30 본인이 직접 준 글. 오타("심뮬레이션")와 본인이 승인한 기관명 정정(인공뇌융합연구단 → 반도체기술연구단) 외에는 고치지 않는다. 바꿀 땐 본인에게 받는다 |
 | **의료 AI(L3)를 SNN 학습의 근거로 쓰지 않는다** | 본인 지적(2026-09-30): L3 = 역전파 기반 기존 딥러닝(MRI Swin UNETR·유전체 모델). SNN·스파이크 처리는 전공의 **생체신호 처리(L1)** 와 이어진다 |
+| **신원·증서 번호를 넣지 않는다** | 생년월일·학번·학위등록번호·졸업증서 번호·과목별 성적·학기별 GPA는 공개하지 않는다 (2026-10-03) |
 | **미발표 연구 내용·데이터를 넣지 않는다** | 현 직무 설명은 "생물학적 신경회로를 SNN으로 시뮬레이션" 수준까지만 |
 | **푸시는 확인 후** | 공개 저장소(`github.com/KimHanbyul2000/CV_Portfolio`)다. 커밋·푸시는 사용자가 요청할 때만 |
 
@@ -80,6 +84,7 @@ H(u)     = h_now·ease(u-2) + (h_future-h_now)·ease(u-3)
 pip install -r requirements.txt       # numpy, matplotlib, imageio-ffmpeg(번들 ffmpeg)
 python3 src/render.py                  # PNG 5장 (~2초)
 python3 src/render.py --video          # + MP4 20초 1920×1080 (~1분)
+python3 src/cv_pdf.py                  # PDF 이력서 한·영 (pip install playwright && python3 -m playwright install chromium)
 ```
 
 산출물: `stage1~4.png`, `overview.png`(4단계 나란히), `decomposition.png`(개별 곡면 + 합), `hero.png`, `og.png`(링크 미리보기 1200×630 — 사용자 사이트도 씀), `convergence.mp4`.
@@ -100,7 +105,7 @@ L1 라벨은 L_now 를 가리지 않도록 38° 왼쪽 뒤로 비키고 최소 �
 python3 -m http.server 8741           # → http://localhost:8741/
 ```
 
-확인할 것: 콘솔 에러 0 · 1~4 단계 버튼 · 곡면 버튼 4상태 · 라이트/다크 전환(3D 화면 포함) · 타임라인 · 폭 390px(모바일).
+확인할 것: 콘솔 에러 0 · 1~4 단계 버튼 · 곡면 버튼 4상태 · 라이트/다크 전환(3D 화면 포함) · 타임라인(연도 hover 펼침 · 클릭 고정) · 폭 390px(모바일).
 백그라운드 탭에서는 requestAnimationFrame 이 멈춰 애니메이션이 중간값에 걸려 보일 수 있다 —
 버그로 오인하지 말고 슬라이더 값을 직접 넣어 확인한다.
 

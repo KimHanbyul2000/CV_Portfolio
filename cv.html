@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kim Hanbyul — CV</title>
+<meta name="robots" content="noindex">
+<!-- 인쇄용 이력서. data/profile.json 을 읽어 그린다. ?lang=en 이면 영어. 본문은 web/cv.js — 홈페이지 "이력" 절과 같은 함수라 정보가 항상 같다.
+     PDF 는 src/cv_pdf.py 가 이 페이지를 인쇄해 assets/cv/ 에 만든다. 화면에서 직접 인쇄해도 같은 모양이다. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="web/cv.css">
+<style>
+:root{--ink:#141824;--muted:#5d6475;--line:#e1e4ec;--panel:#f6f7fa;--c-in:#e0306f;--c-l1:#1a9e92;--c-l2:#2f6fe0;--c-l3:#8a55e6;--paper:#ffffff;--desk:#eef0f5}
+@page{size:A4;margin:14mm 15mm}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--desk);color:var(--ink);font-family:"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;
+  font-size:10pt;line-height:1.55;word-break:keep-all;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.bar{position:sticky;top:0;display:flex;justify-content:flex-end;gap:8px;padding:10px 16px;background:var(--desk)}
+.bar button,.bar a{appearance:none;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;
+  padding:5px 14px;font:inherit;font-size:13px;cursor:pointer;text-decoration:none}
+.sheet{width:210mm;max-width:100%;min-height:297mm;margin:0 auto 32px;background:var(--paper);padding:14mm 15mm;
+  box-shadow:0 2px 18px rgba(20,24,36,.08)}
+@media print{
+  body{background:none}
+  .bar{display:none}
+  .sheet{width:auto;min-height:0;margin:0;padding:0;box-shadow:none}
+}
+header{border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:14px}
+h1{font-size:22pt;line-height:1.15;margin:0;letter-spacing:-.01em}
+h1 small{font-size:11pt;color:var(--muted);font-weight:500;margin-left:8px}
+.headline{margin:6px 0 8px;font-size:10.5pt}
+.contact{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:9pt;color:var(--muted)}
+.contact a{color:inherit;text-decoration:none}
+.contact b{color:var(--ink);font-weight:500}
+footer{margin-top:16px;padding-top:6px;border-top:1px solid var(--line);font-size:8pt;color:var(--muted);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="bar">
+  <a id="lang" href="#"></a>
+  <button id="print" type="button"></button>
+</div>
+<main class="sheet" id="cv"></main>
+<script type="module">
+import { cvHTML } from "./web/cv.js";
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+// 언어: ?lang= 이 우선, 없으면 홈페이지와 같은 localStorage "lang", 기본 한국어
+let L = new URLSearchParams(location.search).get("lang");
+if (L !== "en" && L !== "ko") { try { L = localStorage.getItem("lang"); } catch (e) {} }
+L = L === "en" ? "en" : "ko";
+document.documentElement.lang = L;
+
+const pf = await fetch("data/profile.json").then(r => r.json());
+const K = (ko, en) => L === "ko" ? ko : en;
+const site = pf.links.find(l => l.label === "Home")?.href ?? "";
+const gh = pf.links.find(l => l.label === "GitHub")?.href ?? "";
+const portfolio = site + "CV_Portfolio/";
+const today = new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Seoul" });
+const bare = u => u.replace(/^https?:\/\//, "").replace(/\/$/, "");
+
+$("cv").innerHTML = `
+  <header>
+    <h1>${esc(pf.name[L])}<small>${esc(pf.name[L === "ko" ? "en" : "ko"])}</small></h1>
+    <p class="headline">${esc(pf.headline[L])}</p>
+    <div class="contact">
+      <span><b>Email</b> <a href="mailto:${esc(pf.contact.email)}">${esc(pf.contact.email)}</a></span>
+      <span><b>Web</b> <a href="${esc(site)}">${esc(bare(site))}</a></span>
+      <span><b>Portfolio</b> <a href="${esc(portfolio)}">${esc(bare(portfolio))}</a></span>
+      <span><b>GitHub</b> <a href="${esc(gh)}">${esc(bare(gh))}</a></span>
+    </div>
+  </header>
+
+  ${cvHTML(pf, L)}
+
+  <footer>
+    <span>${K("작성일", "Updated")} ${today}</span>
+    <span>${esc(bare(portfolio))}</span>
+  </footer>`;
+
+$("lang").textContent = L === "ko" ? "English" : "한국어";
+$("lang").href = `?lang=${L === "ko" ? "en" : "ko"}`;
+$("print").textContent = K("인쇄 · PDF로 저장", "Print · Save as PDF");
+$("print").onclick = () => print();
+document.title = K("김한별 — 이력서", "Kim Hanbyul — CV");
+await document.fonts.ready;
+document.body.dataset.ready = "1";   // src/cv_pdf.py 가 이 표시를 기다렸다가 인쇄한다
+</script>
+</body>
+</html>
