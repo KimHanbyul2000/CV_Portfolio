@@ -111,7 +111,7 @@
       {
         "when": "2024-1",
         "highlight": true,
-        "ko": "국가우수장학금 (이공계)_2년",
+        "ko": "국가우수장학금 (이공계) — 2년",
         "en": "National Scholarship for Science & Engineering (2 years)"
       },
       {
@@ -128,17 +128,17 @@
     "activities": [
       {
         "when": "2024.01 – 02",
-        "ko": "해외현장체험 — 뉴프런티어_미국",
+        "ko": "해외현장체험 — 뉴프런티어 (미국)",
         "en": "Overseas field program — New Frontier, USA"
       },
       {
         "when": "2025.01 – 02",
-        "ko": "해외문화탐방_충북-싱가폴",
+        "ko": "해외문화탐방 — 충북 · 싱가포르",
         "en": "Overseas cultural program — Chungbuk, Singapore"
       },
       {
         "when": "2025.01 – 02",
-        "ko": "해외문화탐방_글로컬-대만",
+        "ko": "해외문화탐방 — 글로컬 · 대만",
         "en": "Overseas cultural program — GLOCAL, Taiwan"
       }
     ]
@@ -335,7 +335,7 @@
         ],
         "summer": [
           {
-            "ko": "오송_첨단의료기기 RIS교육",
+            "ko": "오송 첨단의료기기 RIS 교육",
             "en": "Osong — Advanced Medical Device RIS program"
           }
         ],
@@ -351,7 +351,7 @@
         ],
         "winter": [
           {
-            "ko": "해외현장체험 — 뉴프런티어_미국",
+            "ko": "해외현장체험 — 뉴프런티어 (미국)",
             "en": "Overseas field program — New Frontier, USA"
           }
         ]
@@ -370,7 +370,7 @@
             "en": "Began minor coursework — Memory Semiconductor Devices, Semiconductor Equipment"
           },
           {
-            "ko": "국가우수장학금 (이공계)_2년",
+            "ko": "국가우수장학금 (이공계) — 2년",
             "en": "National Scholarship for Science & Engineering (2 years)"
           },
           {
@@ -400,11 +400,11 @@
         ],
         "winter": [
           {
-            "ko": "해외문화탐방_충북-싱가폴",
+            "ko": "해외문화탐방 — 충북 · 싱가포르",
             "en": "Overseas cultural program — Chungbuk, Singapore"
           },
           {
-            "ko": "해외문화탐방_글로컬-대만",
+            "ko": "해외문화탐방 — 글로컬 · 대만",
             "en": "Overseas cultural program — GLOCAL, Taiwan"
           }
         ]
@@ -433,8 +433,8 @@
         ],
         "summer": [
           {
-            "ko": "헬스ai 교육(9m)",
-            "en": "Health AI training (9m)"
+            "ko": "헬스 AI 교육 (9개월)",
+            "en": "Health AI training (9 months)"
           }
         ],
         "s2": [
