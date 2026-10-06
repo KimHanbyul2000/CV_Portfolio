@@ -1,6 +1,6 @@
 {
   "_note": "홈페이지 본문의 단일 출처. index.html 이 이 파일을 읽어 그린다. 모든 문구는 ko/en 쌍. 본인이 준 사실만 적는다. convergence.body_ko 는 본인 작성 — 임의 수정 금지.",
-  "_terms_note": "타임라인 학년도 학기 구분(terms) — 학년도는 3월~이듬해 2월. s1=1학기(3~6월) summer=하계(7~8월) s2=2학기(9~12월) winter=동계(이듬해 1~2월). 각 칸은 {ko,en} 항목 배열. 본인이 준 사실만 적는다 — 비어 있으면 홈페이지에 '—'로 보인다. terms 키가 있는 항목에만 연도 호버·클릭 고정 패널이 생긴다.",
+  "_terms_note": "타임라인 학년도 학기 구분(terms) — 학년도는 3월~이듬해 2월. s1=1학기(3~6월) summer=하계(7~8월) s2=2학기(9~12월) winter=동계(이듬해 1~2월). 각 칸은 {ko,en} 항목 배열. 본인이 준 사실만 적는다 — 비어 있으면 홈페이지에 '—'로 보인다. terms 키가 있는 항목에만 연도 호버·클릭 고정 패널이 생긴다. months 키(terms 대신)는 학기 구분 없이 12개월(3월~이듬해 2월) 선으로 그린다 — 각 항목 {from, to: 'YYYY.MM', ko, en}. 2026 학년도부터 사용(본인 지시 2026-10-06).",
   "name": {
     "ko": "김한별",
     "en": "Kim Hanbyul"
@@ -109,10 +109,10 @@
     ],
     "scholarships": [
       {
-        "when": "2024-1 – 2025-2",
+        "when": "2024-1",
         "highlight": true,
-        "ko": "국가우수장학금 (이공계) — 2년 지원, 4개 학기",
-        "en": "National Scholarship for Science & Engineering — 2-year award, 4 semesters"
+        "ko": "국가우수장학금 (이공계)_2년",
+        "en": "National Scholarship for Science & Engineering (2 years)"
       },
       {
         "when": "2023-2 · 2024-1",
@@ -120,41 +120,26 @@
         "en": "Merit scholarship (Uijo)"
       },
       {
-        "when": "2020-1",
-        "ko": "입학금감축대응장학",
-        "en": "Admission-fee reduction scholarship"
-      },
-      {
-        "when": "2020-1",
-        "ko": "학업지원특별장학 1 (생활비성) · 2 (학비감면)",
-        "en": "Special academic support scholarship I (living costs) · II (tuition)"
-      },
-      {
         "when": "2020-2 · 2023-2",
         "ko": "공모전장학 (국고혁신)",
         "en": "Contest scholarship (national innovation fund)"
-      },
-      {
-        "when": "2023-1 · 2023-2",
-        "ko": "다드림 (DreamPoint)",
-        "en": "DreamPoint scholarship"
-      },
-      {
-        "when": "2023-1",
-        "ko": "역량개발장학 Ⅲ (기숙사)",
-        "en": "Competency development scholarship III (dormitory)"
       }
     ],
     "activities": [
       {
-        "when": "2023-2",
-        "ko": "해외현장체험 — 뉴프런티어",
-        "en": "Overseas field program — New Frontier"
+        "when": "2024.01 – 02",
+        "ko": "해외현장체험 — 뉴프런티어_미국",
+        "en": "Overseas field program — New Frontier, USA"
       },
       {
-        "when": "2024-2",
-        "ko": "해외문화탐방 (글로컬)",
-        "en": "Overseas cultural program (GLOCAL)"
+        "when": "2025.01 – 02",
+        "ko": "해외문화탐방_충북-싱가폴",
+        "en": "Overseas cultural program — Chungbuk, Singapore"
+      },
+      {
+        "when": "2025.01 – 02",
+        "ko": "해외문화탐방_글로컬-대만",
+        "en": "Overseas cultural program — GLOCAL, Taiwan"
       }
     ]
   },
@@ -305,10 +290,6 @@
           {
             "ko": "우등",
             "en": "Academic honors"
-          },
-          {
-            "ko": "입학금감축대응장학 · 학업지원특별장학 1·2",
-            "en": "Admission-fee reduction · special academic support scholarships I·II"
           }
         ],
         "summer": [],
@@ -350,28 +331,30 @@
           {
             "ko": "제대 복학 (2023.01)",
             "en": "Returned after military service (Jan 2023)"
-          },
-          {
-            "ko": "다드림 · 역량개발장학 Ⅲ",
-            "en": "DreamPoint · competency development scholarship III"
           }
         ],
-        "summer": [],
+        "summer": [
+          {
+            "ko": "오송_첨단의료기기 RIS교육",
+            "en": "Osong — Advanced Medical Device RIS program"
+          }
+        ],
         "s2": [
           {
             "ko": "우등",
             "en": "Academic honors"
           },
           {
-            "ko": "해외현장체험 — 뉴프런티어",
-            "en": "Overseas field program — New Frontier"
-          },
-          {
-            "ko": "공모전장학 (국고혁신) · 다드림 · 의조 (성적장학)",
-            "en": "Contest scholarship · DreamPoint · merit scholarship (Uijo)"
+            "ko": "공모전장학 (국고혁신) · 의조 (성적장학)",
+            "en": "Contest scholarship · merit scholarship (Uijo)"
           }
         ],
-        "winter": []
+        "winter": [
+          {
+            "ko": "해외현장체험 — 뉴프런티어_미국",
+            "en": "Overseas field program — New Frontier, USA"
+          }
+        ]
       }
     },
     {
@@ -387,8 +370,8 @@
             "en": "Began minor coursework — Memory Semiconductor Devices, Semiconductor Equipment"
           },
           {
-            "ko": "국가우수장학금 (이공계)",
-            "en": "National Scholarship for Science & Engineering"
+            "ko": "국가우수장학금 (이공계)_2년",
+            "en": "National Scholarship for Science & Engineering (2 years)"
           },
           {
             "ko": "의조 (성적장학)",
@@ -413,17 +396,18 @@
           {
             "ko": "Quantum Mechanics · Biomedical Signal Processing · Instrumentation",
             "en": "Quantum Mechanics · Biomedical Signal Processing · Instrumentation"
-          },
-          {
-            "ko": "해외문화탐방 (글로컬)",
-            "en": "Overseas cultural program (GLOCAL)"
-          },
-          {
-            "ko": "국가우수장학금 (이공계)",
-            "en": "National Scholarship for Science & Engineering"
           }
         ],
-        "winter": []
+        "winter": [
+          {
+            "ko": "해외문화탐방_충북-싱가폴",
+            "en": "Overseas cultural program — Chungbuk, Singapore"
+          },
+          {
+            "ko": "해외문화탐방_글로컬-대만",
+            "en": "Overseas cultural program — GLOCAL, Taiwan"
+          }
+        ]
       }
     },
     {
@@ -445,21 +429,18 @@
           {
             "ko": "캡스톤디자인 1",
             "en": "Capstone Design 1"
-          },
-          {
-            "ko": "국가우수장학금 (이공계)",
-            "en": "National Scholarship for Science & Engineering"
           }
         ],
-        "summer": [],
+        "summer": [
+          {
+            "ko": "헬스ai 교육(9m)",
+            "en": "Health AI training (9m)"
+          }
+        ],
         "s2": [
           {
             "ko": "캡스톤디자인 2 — ESP32-S3-BOX-3 기반 AI 비서 (IoT 프레임워크)",
             "en": "Capstone Design 2 — AI assistant on ESP32-S3-BOX-3 (IoT framework)"
-          },
-          {
-            "ko": "국가우수장학금 (이공계)",
-            "en": "National Scholarship for Science & Engineering"
           }
         ],
         "winter": [
@@ -476,40 +457,20 @@
       "pillar": "Lnow",
       "ko": "KIST 인턴 연구원 — 뉴로모픽·SNN 연구 (2026.05 – 2027.01) · 국가 R&D 소뇌모사 반도체 과제 참여연구원 · 석사과정 입학 준비",
       "en": "KIST Research Intern — neuromorphic & SNN research (May 2026 – Jan 2027) · participating researcher in a national R&D project on cerebellum-inspired semiconductors · preparing for a master's program",
-      "terms": {
-        "s1": [
-          {
-            "ko": "KIST 인턴 연구원 시작 — 뉴로모픽·SNN 연구 (2026.05)",
-            "en": "Started as KIST Research Intern — neuromorphic & SNN research (May 2026)"
-          },
-          {
-            "ko": "국가 R&D 소뇌모사 반도체 과제 참여연구원 (2026.05 –)",
-            "en": "Participating researcher, national R&D project on cerebellum-inspired semiconductors (from May 2026)"
-          }
-        ],
-        "summer": [
-          {
-            "ko": "KIST 인턴 연구원 · 국가 R&D 과제 참여 (계속)",
-            "en": "KIST Research Intern · national R&D project (continuing)"
-          }
-        ],
-        "s2": [
-          {
-            "ko": "KIST 인턴 연구원 (계속)",
-            "en": "KIST Research Intern (continuing)"
-          },
-          {
-            "ko": "국가 R&D 과제 참여 종료 (2026.12)",
-            "en": "National R&D project participation ends (Dec 2026)"
-          }
-        ],
-        "winter": [
-          {
-            "ko": "KIST 인턴 계약 종료 (2027.01)",
-            "en": "KIST internship contract ends (Jan 2027)"
-          }
-        ]
-      }
+      "months": [
+        {
+          "from": "2026.05",
+          "to": "2027.01",
+          "ko": "KIST 인턴 연구원 — 뉴로모픽·SNN 연구 (2026.05 – 2027.01)",
+          "en": "KIST Research Intern — neuromorphic & SNN research (May 2026 – Jan 2027)"
+        },
+        {
+          "from": "2026.05",
+          "to": "2026.12",
+          "ko": "국가 R&D 소뇌모사 반도체 과제 참여연구원 (2026.05 – 2026.12)",
+          "en": "Participating researcher, national R&D project on cerebellum-inspired semiconductors (May – Dec 2026)"
+        }
+      ]
     },
     {
       "when": "2027 – 2028",
